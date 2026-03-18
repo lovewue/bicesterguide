@@ -25,8 +25,9 @@ FOOTER_TEMPLATE = load_text(PARTIALS_DIR / "footer.html")
 
 HOMEPAGE_TEMPLATE = load_text(TEMPLATES_DIR / "homepage.html")
 HOTELS_TEMPLATE = load_text(TEMPLATES_DIR / "hotels.html")
-RESTAURANTS_TEMPLATE = load_text(TEMPLATES_DIR / "restaurants.html")
-THINGS_TEMPLATE = load_text(TEMPLATES_DIR / "things-to-do.html")
+EAT_DRINK_TEMPLATE = load_text(TEMPLATES_DIR / "eat-drink.html")
+THINGS_TO_DO_TEMPLATE = load_text(TEMPLATES_DIR / "things-to-do.html")
+PLAN_TEMPLATE = load_text(TEMPLATES_DIR / "plan.html")
 
 
 # -----------------------------------------------------------------------------
@@ -62,29 +63,38 @@ def render_homepage() -> None:
 
 def render_hotels_page() -> None:
     html = render_page(
-        title="Best Hotels Near Bicester Village | Bicester Guide",
+        title="Hotels Near Bicester Village | Bicester Guide",
         meta_description="Find the best hotels near Bicester Village, from practical overnight stays to more relaxed weekend options.",
         content=HOTELS_TEMPLATE,
     )
     write_page(OUTPUT_DIR / "hotels" / "index.html", html)
 
 
-def render_restaurants_page() -> None:
+def render_eat_drink_page() -> None:
     html = render_page(
-        title="Best Restaurants Near Bicester Village | Bicester Guide",
-        meta_description="Discover the best places to eat in and around Bicester Village.",
-        content=RESTAURANTS_TEMPLATE,
+        title="Eat & Drink Near Bicester Village | Bicester Guide",
+        meta_description="Find restaurants, gastropubs, pubs, bars and farm shops near Bicester Village.",
+        content=EAT_DRINK_TEMPLATE,
     )
-    write_page(OUTPUT_DIR / "restaurants" / "index.html", html)
+    write_page(OUTPUT_DIR / "eat-drink" / "index.html", html)
 
 
-def render_things_page() -> None:
+def render_things_to_do_page() -> None:
     html = render_page(
         title="Things To Do Near Bicester Village | Bicester Guide",
-        meta_description="Explore things to do near Bicester Village, from shopping to countryside escapes.",
-        content=THINGS_TEMPLATE,
+        meta_description="Discover hidden gems, day trips, the Cotswolds and more things to do near Bicester Village.",
+        content=THINGS_TO_DO_TEMPLATE,
     )
     write_page(OUTPUT_DIR / "things-to-do" / "index.html", html)
+
+
+def render_plan_page() -> None:
+    html = render_page(
+        title="Plan Your Visit | Bicester Guide",
+        meta_description="Plan your visit to Bicester Village with transport, useful services and practical local information.",
+        content=PLAN_TEMPLATE,
+    )
+    write_page(OUTPUT_DIR / "plan" / "index.html", html)
 
 
 # -----------------------------------------------------------------------------
@@ -95,8 +105,9 @@ def main() -> None:
 
     render_homepage()
     render_hotels_page()
-    render_restaurants_page()
-    render_things_page()
+    render_eat_drink_page()
+    render_things_to_do_page()
+    render_plan_page()
 
     print("Site render complete.")
 
