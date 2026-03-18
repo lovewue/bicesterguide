@@ -93,7 +93,12 @@ def filter_places(
 
         results.append(place)
 
-    results.sort(key=lambda p: (not to_bool(p.get("featured", False)), p.get("name", "")))
+    results.sort(
+        key=lambda p: (
+            not to_bool(p.get("featured", False)),
+            p.get("name", "").lower(),
+        )
+    )
     return results
 
 
@@ -251,6 +256,33 @@ def build_things_to_do_content(places: list[dict]) -> str:
     return content
 
 
+def build_plan_content(places: list[dict]) -> str:
+    transport = filter_places(
+        places,
+        category="plan",
+        subcategory="transport",
+    )
+
+    salons = filter_places(
+        places,
+        category="plan",
+        subcategory="salon",
+    )
+
+    useful_services = filter_places(
+        places,
+        category="plan",
+        subcategory="useful-service",
+    )
+
+    content = PLAN_TEMPLATE
+    content = content.replace("{{ transport }}", render_place_cards(transport))
+    content = content.replace("{{ salons }}", render_place_cards(salons))
+    content = content.replace("{{ useful_services }}", render_place_cards(useful_services))
+
+    return content
+
+
 # -----------------------------------------------------------------------------
 # Page renders
 # -----------------------------------------------------------------------------
@@ -290,11 +322,11 @@ def render_things_to_do_page(places: list[dict]) -> None:
     write_page(OUTPUT_DIR / "things-to-do" / "index.html", html)
 
 
-def render_plan_page() -> None:
+def render_plan_page(places: list[dict]) -> None:
     html = render_page(
         title="Plan Your Visit | Bicester Guide",
-        meta_description="Plan your visit to Bicester Village with transport, useful services and practical local information.",
-        content=PLAN_TEMPLATE,
+        meta_description="Transport, salons and useful services near Bicester Village.",
+        content=build_plan_content(places),
     )
     write_page(OUTPUT_DIR / "plan" / "index.html", html)
 
@@ -311,7 +343,7 @@ def main() -> None:
     render_hotels_page(places)
     render_eat_drink_page(places)
     render_things_to_do_page(places)
-    render_plan_page()
+    render_plan_page(places)
 
     print("Site render complete.")
 
