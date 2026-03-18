@@ -71,6 +71,7 @@ def filter_places(
     category: str | None = None,
     subcategory: str | None = None,
     area: str | None = None,
+    featured_only: bool = False,
 ) -> list[dict]:
     results = []
 
@@ -87,10 +88,17 @@ def filter_places(
         if area and place.get("area") != area:
             continue
 
+        if featured_only and not to_bool(place.get("featured", False)):
+            continue
+
         results.append(place)
 
     results.sort(key=lambda p: (not to_bool(p.get("featured", False)), p.get("name", "")))
     return results
+
+
+def exclude_by_slug(places: list[dict], slugs_to_exclude: set[str]) -> list[dict]:
+    return [place for place in places if place.get("slug") not in slugs_to_exclude]
 
 
 def place_button_link(place: dict) -> str:
@@ -115,9 +123,13 @@ def place_button_label(place: dict) -> str:
     return "View details"
 
 
+def place_description(place: dict) -> str:
+    return place.get("description_short") or place.get("description_long") or ""
+
+
 def render_place_card(place: dict) -> str:
     name = place.get("name", "")
-    description = place.get("description_short") or place.get("description_long") or ""
+    description = place_description(place)
     link = place_button_link(place)
     label = place_button_label(place)
 
@@ -146,6 +158,30 @@ def render_place_cards(places: list[dict]) -> str:
 # -----------------------------------------------------------------------------
 # Page content builders
 # -----------------------------------------------------------------------------
+def build_hotels_content(places: list[dict]) -> str:
+    featured_hotels = filter_places(
+        places,
+        category="hotels",
+        subcategory="hotel",
+        featured_only=True,
+    )
+
+    all_hotels = filter_places(
+        places,
+        category="hotels",
+        subcategory="hotel",
+    )
+
+    featured_slugs = {place.get("slug") for place in featured_hotels}
+    remaining_hotels = exclude_by_slug(all_hotels, featured_slugs)
+
+    content = HOTELS_TEMPLATE
+    content = content.replace("{{ featured_hotels }}", render_place_cards(featured_hotels))
+    content = content.replace("{{ all_hotels }}", render_place_cards(remaining_hotels))
+
+    return content
+
+
 def build_eat_drink_content(places: list[dict]) -> str:
     restaurants_in_village = filter_places(
         places,
@@ -181,6 +217,40 @@ def build_eat_drink_content(places: list[dict]) -> str:
     return content
 
 
+def build_things_to_do_content(places: list[dict]) -> str:
+    hidden_gems = filter_places(
+        places,
+        category="things-to-do",
+        subcategory="hidden-gem",
+    )
+
+    day_trips = filter_places(
+        places,
+        category="things-to-do",
+        subcategory="day-trip",
+    )
+
+    cotswolds = filter_places(
+        places,
+        category="things-to-do",
+        subcategory="cotswolds",
+    )
+
+    garden_centres = filter_places(
+        places,
+        category="things-to-do",
+        subcategory="garden-centre",
+    )
+
+    content = THINGS_TO_DO_TEMPLATE
+    content = content.replace("{{ hidden_gems }}", render_place_cards(hidden_gems))
+    content = content.replace("{{ day_trips }}", render_place_cards(day_trips))
+    content = content.replace("{{ cotswolds }}", render_place_cards(cotswolds))
+    content = content.replace("{{ garden_centres }}", render_place_cards(garden_centres))
+
+    return content
+
+
 # -----------------------------------------------------------------------------
 # Page renders
 # -----------------------------------------------------------------------------
@@ -193,11 +263,11 @@ def render_homepage() -> None:
     write_page(OUTPUT_DIR / "index.html", html)
 
 
-def render_hotels_page() -> None:
+def render_hotels_page(places: list[dict]) -> None:
     html = render_page(
         title="Hotels Near Bicester Village | Bicester Guide",
         meta_description="Find the best hotels near Bicester Village, from practical overnight stays to more relaxed weekend options.",
-        content=HOTELS_TEMPLATE,
+        content=build_hotels_content(places),
     )
     write_page(OUTPUT_DIR / "hotels" / "index.html", html)
 
@@ -211,11 +281,11 @@ def render_eat_drink_page(places: list[dict]) -> None:
     write_page(OUTPUT_DIR / "eat-drink" / "index.html", html)
 
 
-def render_things_to_do_page() -> None:
+def render_things_to_do_page(places: list[dict]) -> None:
     html = render_page(
         title="Things To Do Near Bicester Village | Bicester Guide",
         meta_description="Discover hidden gems, day trips, the Cotswolds and more things to do near Bicester Village.",
-        content=THINGS_TO_DO_TEMPLATE,
+        content=build_things_to_do_content(places),
     )
     write_page(OUTPUT_DIR / "things-to-do" / "index.html", html)
 
@@ -238,9 +308,9 @@ def main() -> None:
     places = load_json(PLACES_JSON)
 
     render_homepage()
-    render_hotels_page()
+    render_hotels_page(places)
     render_eat_drink_page(places)
-    render_things_to_do_page()
+    render_things_to_do_page(places)
     render_plan_page()
 
     print("Site render complete.")
