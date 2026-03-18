@@ -22,8 +22,11 @@ def load_text(path: Path) -> str:
 BASE_TEMPLATE = load_text(TEMPLATES_DIR / "base.html")
 HEADER_TEMPLATE = load_text(PARTIALS_DIR / "header.html")
 FOOTER_TEMPLATE = load_text(PARTIALS_DIR / "footer.html")
+
 HOMEPAGE_TEMPLATE = load_text(TEMPLATES_DIR / "homepage.html")
 HOTELS_TEMPLATE = load_text(TEMPLATES_DIR / "hotels.html")
+RESTAURANTS_TEMPLATE = load_text(TEMPLATES_DIR / "restaurants.html")
+THINGS_TEMPLATE = load_text(TEMPLATES_DIR / "things-to-do.html")
 
 
 # -----------------------------------------------------------------------------
@@ -66,13 +69,35 @@ def render_hotels_page() -> None:
     write_page(OUTPUT_DIR / "hotels" / "index.html", html)
 
 
+def render_restaurants_page() -> None:
+    html = render_page(
+        title="Best Restaurants Near Bicester Village | Bicester Guide",
+        meta_description="Discover the best places to eat in and around Bicester Village.",
+        content=RESTAURANTS_TEMPLATE,
+    )
+    write_page(OUTPUT_DIR / "restaurants" / "index.html", html)
+
+
+def render_things_page() -> None:
+    html = render_page(
+        title="Things To Do Near Bicester Village | Bicester Guide",
+        meta_description="Explore things to do near Bicester Village, from shopping to countryside escapes.",
+        content=THINGS_TEMPLATE,
+    )
+    write_page(OUTPUT_DIR / "things-to-do" / "index.html", html)
+
+
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
 def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
     render_homepage()
     render_hotels_page()
+    render_restaurants_page()
+    render_things_page()
+
     print("Site render complete.")
 
 
