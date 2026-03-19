@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import pandas as pd
+import unicodedata
 
 
 # -----------------------------------------------------------------------------
@@ -28,20 +29,38 @@ def clean_value(value):
     return str(value).strip()
 
 
+def slugify_column_name(column_name: str) -> str:
+    """
+    Convert spreadsheet column names to JSON-friendly snake_case keys.
+
+    Examples:
+    - "distance minutes" -> "distance_minutes"
+    - "Google Maps URL" -> "google_maps_url"
+    - "Café Type" -> "cafe_type"
+    """
+    text = str(column_name).strip().lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    text = text.replace("&", " and ")
+    text = text.replace("/", " ")
+    text = text.replace("-", "_")
+    text = " ".join(text.split())
+    text = text.replace(" ", "_")
+    return text
+
+
 def row_to_dict(row) -> dict:
-    """Convert a dataframe row to a clean dictionary."""
+    """Convert a dataframe row to a clean dictionary with normalised keys."""
     item = {}
 
     for column, value in row.items():
+        key = slugify_column_name(column)
         cleaned = clean_value(value)
 
-        if column == "featured":
-            if str(cleaned).lower() in ("true", "1", "yes"):
-                cleaned = True
-            else:
-                cleaned = False
+        if key == "featured":
+            cleaned = str(cleaned).lower() in {"true", "1", "yes"}
 
-        item[column] = cleaned
+        item[key] = cleaned
 
     return item
 
@@ -64,6 +83,10 @@ def main() -> None:
 
     print(f"Built JSON: {OUTPUT_FILE}")
     print(f"Records: {len(records)}")
+
+    if records:
+        print("Sample keys:")
+        print(list(records[0].keys()))
 
 
 if __name__ == "__main__":

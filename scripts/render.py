@@ -1,5 +1,6 @@
 from pathlib import Path
 import json
+import unicodedata
 
 
 # -----------------------------------------------------------------------------
@@ -68,7 +69,10 @@ def split_values(value: str) -> list[str]:
 
 
 def normalise(value) -> str:
-    return str(value).strip().lower().replace("é", "e")
+    text = str(value).strip().lower()
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(ch for ch in text if not unicodedata.combining(ch))
+    return text
 
 
 def to_bool(value) -> bool:
@@ -107,6 +111,22 @@ def get_area(place: dict) -> str:
 
 def area_in(place: dict, valid_areas: set[str]) -> bool:
     return get_area(place) in {normalise(a) for a in valid_areas}
+
+
+def get_distance_minutes(place: dict) -> int:
+    value = place.get("distance_minutes", "")
+
+    if value is None:
+        return 999
+
+    text = str(value).strip()
+    if not text:
+        return 999
+
+    try:
+        return int(float(text))
+    except ValueError:
+        return 999
 
 
 def filter_places(
@@ -153,6 +173,7 @@ def filter_places(
     results.sort(
         key=lambda p: (
             not to_bool(p.get("featured", False)),
+            get_distance_minutes(p),
             p.get("name", "").lower(),
         )
     )
@@ -188,7 +209,13 @@ def place_label(place: dict) -> str:
 def render_card(place: dict) -> str:
     badge = ""
     tags = get_tags(place)
+    distance = get_distance_minutes(place)
     area = get_area(place).replace("-", " ").title()
+
+    if distance != 999:
+        meta = f"{distance} min drive"
+    else:
+        meta = area
 
     if "luxury" in tags:
         badge = '<span class="badge">Luxury</span>'
@@ -198,7 +225,7 @@ def render_card(place: dict) -> str:
   {badge}
   <h3>{place.get("name", "")}</h3>
   <p>{place.get("description_short", "")}</p>
-  <div class="card-meta">{area}</div>
+  <div class="card-meta">{meta}</div>
   <a href="{place_link(place)}" class="button">{place_label(place)}</a>
 </article>
 """.strip()
@@ -220,45 +247,21 @@ def render_cards(places: list[dict]) -> str:
 # Page builders
 # -----------------------------------------------------------------------------
 def build_hotels_content(places: list[dict]) -> str:
-    all_hotels = filter_places(
+    hotels = filter_places(
         places,
         category="hotels",
         subcategory="hotel",
     )
 
-    luxury = [
-        p for p in all_hotels
-        if "luxury" in get_tags(p)
-    ]
-
-    bicester = [
-        p for p in all_hotels
-        if area_in(p, {"bicester", "bicester-village"})
-    ]
-
-    nearby = [
-        p for p in all_hotels
-        if area_in(
-            p,
-            {"near-bicester", "chesterton", "murcott", "woodstock", "bicester-area"},
-        )
-    ]
-
-    cotswolds = [
-        p for p in all_hotels
-        if area_in(p, {"cotswolds"})
-    ]
-
-    london = [
-        p for p in all_hotels
-        if area_in(p, {"london"})
-    ]
+    within_10 = [p for p in hotels if get_distance_minutes(p) <= 10]
+    within_20 = [p for p in hotels if 10 < get_distance_minutes(p) <= 20]
+    countryside = [p for p in hotels if 20 < get_distance_minutes(p) <= 40]
+    london = [p for p in hotels if get_area(p) == "london"]
 
     content = HOTELS_TEMPLATE
-    content = content.replace("{{ luxury_hotels }}", render_cards(luxury))
-    content = content.replace("{{ hotels_bicester }}", render_cards(bicester))
-    content = content.replace("{{ hotels_nearby }}", render_cards(nearby))
-    content = content.replace("{{ hotels_cotswolds }}", render_cards(cotswolds))
+    content = content.replace("{{ hotels_within_10 }}", render_cards(within_10))
+    content = content.replace("{{ hotels_within_20 }}", render_cards(within_20))
+    content = content.replace("{{ hotels_countryside }}", render_cards(countryside))
     content = content.replace("{{ hotels_london }}", render_cards(london))
 
     return content
@@ -323,7 +326,7 @@ def build_plan_content(places: list[dict]) -> str:
 # -----------------------------------------------------------------------------
 # Page renders
 # -----------------------------------------------------------------------------
-def render_homepage():
+def render_homepage() -> None:
     write_page(
         OUTPUT_DIR / "index.html",
         render_page(
@@ -334,18 +337,18 @@ def render_homepage():
     )
 
 
-def render_hotels(places):
+def render_hotels(places: list[dict]) -> None:
     write_page(
         OUTPUT_DIR / "hotels" / "index.html",
         render_page(
             "Hotels Near Bicester Village",
-            "Where to stay near Bicester Village, from convenient local hotels to luxury countryside stays.",
+            "Where to stay near Bicester Village, from convenient hotels just minutes away to countryside stays further out.",
             build_hotels_content(places),
         ),
     )
 
 
-def render_eat(places):
+def render_eat(places: list[dict]) -> None:
     write_page(
         OUTPUT_DIR / "eat-drink" / "index.html",
         render_page(
@@ -356,7 +359,7 @@ def render_eat(places):
     )
 
 
-def render_things(places):
+def render_things(places: list[dict]) -> None:
     write_page(
         OUTPUT_DIR / "things-to-do" / "index.html",
         render_page(
@@ -367,7 +370,7 @@ def render_things(places):
     )
 
 
-def render_plan(places):
+def render_plan(places: list[dict]) -> None:
     write_page(
         OUTPUT_DIR / "plan" / "index.html",
         render_page(
@@ -381,7 +384,7 @@ def render_plan(places):
 # -----------------------------------------------------------------------------
 # Main
 # -----------------------------------------------------------------------------
-def main():
+def main() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     places = load_json(PLACES_JSON)
