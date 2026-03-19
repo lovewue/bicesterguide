@@ -464,7 +464,7 @@
   {
     "name": "Soho Farmhouse",
     "slug": "soho-farmhouse",
-    "category": "",
+    "category": "hotels",
     "subcategory": "hotel",
     "area": "cotswolds",
     "distance_minutes": "35",
@@ -486,7 +486,7 @@
   {
     "name": "RH England",
     "slug": "rh-england",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "restaurant",
     "area": "banbury",
     "distance_minutes": "17",
@@ -508,7 +508,7 @@
   {
     "name": "The Marlstone Tavern",
     "slug": "marlstone-tavern",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "restaurant",
     "area": "banbury",
     "distance_minutes": "26",
@@ -530,7 +530,7 @@
   {
     "name": "Quince & Clover",
     "slug": "quince-clover",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "cafe",
     "area": "cotswolds",
     "distance_minutes": "32",
@@ -574,7 +574,7 @@
   {
     "name": "Double Red Duke",
     "slug": "red-duke",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "hotel|restaurant",
     "area": "bicester",
     "distance_minutes": "41",
@@ -596,7 +596,7 @@
   {
     "name": "Mollies Motel",
     "slug": "mollies-motel",
-    "category": "",
+    "category": "hotels",
     "subcategory": "hotel|restaurant",
     "area": "cotswolds",
     "distance_minutes": "32",
@@ -618,7 +618,7 @@
   {
     "name": "Blakes Kitchen",
     "slug": "blakes-kitchen",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "bakery|cafe",
     "area": "cotswolds",
     "distance_minutes": "41",
