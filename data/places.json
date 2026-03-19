@@ -16,7 +16,7 @@
     "phone": "",
     "email": "",
     "image": "cecconis.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": "Inside Bicester Village"
   },
@@ -37,7 +37,7 @@
     "phone": "",
     "email": "",
     "image": "shan-shui.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": "Inside Bicester Village"
   },
@@ -79,7 +79,7 @@
     "phone": "",
     "email": "",
     "image": "nut-tree-inn.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": "Top gastropub"
   },
@@ -226,7 +226,7 @@
     "phone": "",
     "email": "",
     "image": "chesterton-hotel.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -289,7 +289,7 @@
     "phone": "",
     "email": "",
     "image": "bicester-village.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": "Core attraction"
   },
@@ -331,7 +331,7 @@
     "phone": "",
     "email": "",
     "image": "blenheim.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -352,7 +352,7 @@
     "phone": "",
     "email": "",
     "image": "oxford.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -373,7 +373,7 @@
     "phone": "",
     "email": "",
     "image": "cotswolds.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -415,7 +415,7 @@
     "phone": "",
     "email": "",
     "image": "station.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -436,7 +436,7 @@
     "phone": "",
     "email": "",
     "image": "estell.jpg",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -457,7 +457,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -478,7 +478,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -499,7 +499,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -520,7 +520,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -541,7 +541,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -562,7 +562,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -583,7 +583,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -604,7 +604,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -625,7 +625,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -646,7 +646,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -667,7 +667,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -688,7 +688,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -709,7 +709,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -730,7 +730,7 @@
     "phone": "",
     "email": "",
     "image": "",
-    "featured": false,
+    "featured": true,
     "status": "live",
     "notes": ""
   },
@@ -794,7 +794,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -815,7 +815,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -836,7 +836,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -857,7 +857,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -878,7 +878,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -899,7 +899,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -920,7 +920,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -941,7 +941,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -962,7 +962,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   },
   {
@@ -983,7 +983,7 @@
     "email": "",
     "image": "",
     "featured": false,
-    "status": "",
+    "status": "live",
     "notes": ""
   }
 ]
