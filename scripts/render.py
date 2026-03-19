@@ -72,7 +72,37 @@ def to_bool(value) -> bool:
 
 
 def is_live(place: dict) -> bool:
-    return str(place.get("status", "")).lower() == "live"
+    return str(place.get("status", "")).strip().lower() == "live"
+
+
+def get_categories(place: dict) -> list[str]:
+    if place.get("categories"):
+        return split_values(place.get("categories", ""))
+    if place.get("category"):
+        return [str(place.get("category", "")).strip()]
+    return []
+
+
+def get_subcategories(place: dict) -> list[str]:
+    if place.get("subcategories"):
+        return split_values(place.get("subcategories", ""))
+    if place.get("subcategory"):
+        return [str(place.get("subcategory", "")).strip()]
+    return []
+
+
+def get_tags(place: dict) -> list[str]:
+    if place.get("tags"):
+        return split_values(place.get("tags", ""))
+    return []
+
+
+def get_area(place: dict) -> str:
+    return str(place.get("area", "")).strip().lower()
+
+
+def area_in(place: dict, valid_areas: set[str]) -> bool:
+    return get_area(place) in valid_areas
 
 
 def filter_places(
@@ -90,9 +120,9 @@ def filter_places(
         if not is_live(place):
             continue
 
-        categories = split_values(place.get("categories", ""))
-        subcategories = split_values(place.get("subcategories", ""))
-        tags = split_values(place.get("tags", ""))
+        categories = get_categories(place)
+        subcategories = get_subcategories(place)
+        tags = get_tags(place)
 
         if category and category not in categories:
             continue
@@ -100,7 +130,7 @@ def filter_places(
         if subcategory and subcategory not in subcategories:
             continue
 
-        if area and place.get("area") != area:
+        if area and get_area(place) != area:
             continue
 
         if tag and tag not in tags:
@@ -147,10 +177,19 @@ def place_label(place: dict) -> str:
 
 
 def render_card(place: dict) -> str:
+    badge = ""
+    tags = get_tags(place)
+    area = get_area(place).replace("-", " ").title()
+
+    if "luxury" in tags:
+        badge = '<span class="badge">Luxury</span>'
+
     return f"""
 <article class="listing-card">
+  {badge}
   <h3>{place.get("name", "")}</h3>
   <p>{place.get("description_short", "")}</p>
+  <div class="card-meta">{area}</div>
   <a href="{place_link(place)}" class="button">{place_label(place)}</a>
 </article>
 """.strip()
@@ -172,41 +211,36 @@ def render_cards(places: list[dict]) -> str:
 # Page builders
 # -----------------------------------------------------------------------------
 def build_hotels_content(places: list[dict]) -> str:
-
-    luxury = filter_places(
+    all_hotels = filter_places(
         places,
         category="hotels",
         subcategory="hotel",
-        tag="luxury",
     )
 
-    bicester = filter_places(
-        places,
-        category="hotels",
-        subcategory="hotel",
-        area="bicester",
-    )
+    luxury = [
+        p for p in all_hotels
+        if "luxury" in get_tags(p)
+    ]
 
-    nearby = filter_places(
-        places,
-        category="hotels",
-        subcategory="hotel",
-        area="near-bicester",
-    )
+    bicester = [
+        p for p in all_hotels
+        if area_in(p, {"bicester", "bicester-village"})
+    ]
 
-    cotswolds = filter_places(
-        places,
-        category="hotels",
-        subcategory="hotel",
-        area="cotswolds",
-    )
+    nearby = [
+        p for p in all_hotels
+        if area_in(p, {"near-bicester", "chesterton", "murcott", "woodstock", "bicester-area"})
+    ]
 
-    london = filter_places(
-        places,
-        category="hotels",
-        subcategory="hotel",
-        area="london",
-    )
+    cotswolds = [
+        p for p in all_hotels
+        if area_in(p, {"cotswolds"})
+    ]
+
+    london = [
+        p for p in all_hotels
+        if area_in(p, {"london"})
+    ]
 
     content = HOTELS_TEMPLATE
     content = content.replace("{{ luxury_hotels }}", render_cards(luxury))
@@ -221,25 +255,19 @@ def build_hotels_content(places: list[dict]) -> str:
 def build_eat_drink_content(places: list[dict]) -> str:
     content = EAT_DRINK_TEMPLATE
 
-    content = content.replace(
-        "{{ restaurants_in_village }}",
-        render_cards(filter_places(places, category="eat-drink", subcategory="restaurant", area="bicester-village")),
-    )
+    restaurants_in_village = [
+        p for p in filter_places(places, category="eat-drink", subcategory="restaurant")
+        if area_in(p, {"bicester-village"})
+    ]
 
-    content = content.replace(
-        "{{ gastropubs }}",
-        render_cards(filter_places(places, category="eat-drink", subcategory="gastropub")),
-    )
+    gastropubs = filter_places(places, category="eat-drink", subcategory="gastropub")
+    pubs_and_bars = filter_places(places, category="eat-drink", subcategory="pub-bar")
+    farm_shops = filter_places(places, category="eat-drink", subcategory="farm-shop")
 
-    content = content.replace(
-        "{{ pubs_and_bars }}",
-        render_cards(filter_places(places, category="eat-drink", subcategory="pub-bar")),
-    )
-
-    content = content.replace(
-        "{{ farm_shops }}",
-        render_cards(filter_places(places, category="eat-drink", subcategory="farm-shop")),
-    )
+    content = content.replace("{{ restaurants_in_village }}", render_cards(restaurants_in_village))
+    content = content.replace("{{ gastropubs }}", render_cards(gastropubs))
+    content = content.replace("{{ pubs_and_bars }}", render_cards(pubs_and_bars))
+    content = content.replace("{{ farm_shops }}", render_cards(farm_shops))
 
     return content
 
@@ -247,25 +275,15 @@ def build_eat_drink_content(places: list[dict]) -> str:
 def build_things_to_do_content(places: list[dict]) -> str:
     content = THINGS_TO_DO_TEMPLATE
 
-    content = content.replace(
-        "{{ hidden_gems }}",
-        render_cards(filter_places(places, category="things-to-do", subcategory="hidden-gem")),
-    )
+    hidden_gems = filter_places(places, category="things-to-do", subcategory="hidden-gem")
+    day_trips = filter_places(places, category="things-to-do", subcategory="day-trip")
+    cotswolds = filter_places(places, category="things-to-do", subcategory="cotswolds")
+    garden_centres = filter_places(places, category="things-to-do", subcategory="garden-centre")
 
-    content = content.replace(
-        "{{ day_trips }}",
-        render_cards(filter_places(places, category="things-to-do", subcategory="day-trip")),
-    )
-
-    content = content.replace(
-        "{{ cotswolds }}",
-        render_cards(filter_places(places, category="things-to-do", subcategory="cotswolds")),
-    )
-
-    content = content.replace(
-        "{{ garden_centres }}",
-        render_cards(filter_places(places, category="things-to-do", subcategory="garden-centre")),
-    )
+    content = content.replace("{{ hidden_gems }}", render_cards(hidden_gems))
+    content = content.replace("{{ day_trips }}", render_cards(day_trips))
+    content = content.replace("{{ cotswolds }}", render_cards(cotswolds))
+    content = content.replace("{{ garden_centres }}", render_cards(garden_centres))
 
     return content
 
@@ -273,20 +291,13 @@ def build_things_to_do_content(places: list[dict]) -> str:
 def build_plan_content(places: list[dict]) -> str:
     content = PLAN_TEMPLATE
 
-    content = content.replace(
-        "{{ transport }}",
-        render_cards(filter_places(places, category="plan", subcategory="transport")),
-    )
+    transport = filter_places(places, category="plan", subcategory="transport")
+    salons = filter_places(places, category="plan", subcategory="salon")
+    useful_services = filter_places(places, category="plan", subcategory="useful-service")
 
-    content = content.replace(
-        "{{ salons }}",
-        render_cards(filter_places(places, category="plan", subcategory="salon")),
-    )
-
-    content = content.replace(
-        "{{ useful_services }}",
-        render_cards(filter_places(places, category="plan", subcategory="useful-service")),
-    )
+    content = content.replace("{{ transport }}", render_cards(transport))
+    content = content.replace("{{ salons }}", render_cards(salons))
+    content = content.replace("{{ useful_services }}", render_cards(useful_services))
 
     return content
 
@@ -297,35 +308,55 @@ def build_plan_content(places: list[dict]) -> str:
 def render_homepage():
     write_page(
         OUTPUT_DIR / "index.html",
-        render_page("Bicester Guide", "Your guide to Bicester Village and beyond.", HOMEPAGE_TEMPLATE),
+        render_page(
+            "Bicester Guide",
+            "Your guide to Bicester Village and beyond.",
+            HOMEPAGE_TEMPLATE,
+        ),
     )
 
 
 def render_hotels(places):
     write_page(
         OUTPUT_DIR / "hotels" / "index.html",
-        render_page("Hotels Near Bicester Village", "", build_hotels_content(places)),
+        render_page(
+            "Hotels Near Bicester Village",
+            "Where to stay near Bicester Village, from convenient local hotels to luxury countryside stays.",
+            build_hotels_content(places),
+        ),
     )
 
 
 def render_eat(places):
     write_page(
         OUTPUT_DIR / "eat-drink" / "index.html",
-        render_page("Eat & Drink Near Bicester Village", "", build_eat_drink_content(places)),
+        render_page(
+            "Eat & Drink Near Bicester Village",
+            "Restaurants, gastropubs, pubs, bars and farm shops near Bicester Village.",
+            build_eat_drink_content(places),
+        ),
     )
 
 
 def render_things(places):
     write_page(
         OUTPUT_DIR / "things-to-do" / "index.html",
-        render_page("Things to Do Near Bicester Village", "", build_things_to_do_content(places)),
+        render_page(
+            "Things to Do Near Bicester Village",
+            "Hidden gems, day trips, the Cotswolds and more things to do near Bicester Village.",
+            build_things_to_do_content(places),
+        ),
     )
 
 
 def render_plan(places):
     write_page(
         OUTPUT_DIR / "plan" / "index.html",
-        render_page("Plan Your Visit", "", build_plan_content(places)),
+        render_page(
+            "Plan Your Visit",
+            "Transport, salons and useful services near Bicester Village.",
+            build_plan_content(places),
+        ),
     )
 
 
