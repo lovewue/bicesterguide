@@ -366,6 +366,10 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .listing-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
 
 /* ==========================================================================
@@ -412,4 +416,57 @@ a {
   margin: 0;
   color: #555555;
   line-height: 1.65;
+}
+
+/* ==========================================================================
+   Hub pages
+   ========================================================================== */
+
+.content-sections {
+  display: grid;
+  gap: 40px;
+}
+
+.content-block h2 {
+  margin: 0 0 10px;
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.section-intro {
+  margin: 0 0 20px;
+  color: #5a5a5a;
+  max-width: 720px;
+}
+
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* ==========================================================================
+   Sub navigation
+   ========================================================================== */
+
+.sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0 40px;
+}
+
+.sub-nav a {
+  padding: 8px 14px;
+  background: #ffffff;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.sub-nav a:hover {
+  background: #000000;
+  color: #ffffff;
 }
