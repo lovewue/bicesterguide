@@ -5,74 +5,82 @@
       <p class="eyebrow">Eat &amp; Drink</p>
       <h1>Where to eat and drink near Bicester Village</h1>
       <p>
-        From restaurants and cafés in Bicester Village to gastropubs, bars and farm shops nearby,
+        From cafés and restaurants in Bicester Village itself to nearby pubs, gastropubs and countryside favourites,
         here are some of the best places to eat and drink before, during or after your visit.
       </p>
     </div>
 
   </div>
 
-  <!-- Sticky Sub Navigation -->
   <div class="sub-nav-wrap">
     <nav class="sub-nav" aria-label="Eat and drink sections">
-      <a href="#restaurants">Restaurants</a>
-      <a href="#cafes">Cafés</a>
-      <a href="#gastropubs">Gastropubs</a>
-      <a href="#pubs-bars">Pubs &amp; Bars</a>
-      <a href="#farm-shops">Farm Shops</a>
+      <a href="#in-village">In Bicester Village</a>
+      <a href="#nearby">Nearby</a>
+      <a href="#worth-the-drive">Worth the drive</a>
     </nav>
   </div>
 
   <div class="container">
     <div class="content-sections">
 
-      <section class="content-block" id="restaurants">
-        <h2>Restaurants in Bicester Village</h2>
+      <section class="content-block" id="in-village">
+        <h2>In Bicester Village</h2>
         <p class="section-intro">
           Ideal if you want to stay close to the shops and keep things simple.
         </p>
+
+        <h3>Restaurants</h3>
         <div class="listing-grid">
           {{ restaurants_in_village }}
         </div>
-      </section>
 
-      <section class="content-block" id="cafes">
-        <h2>Cafés in Bicester Village</h2>
-        <p class="section-intro">
-          Perfect for coffee, pastries, lighter bites or a mid-shop pause.
-        </p>
+        <h3>Cafés</h3>
         <div class="listing-grid">
           {{ cafes_in_village }}
         </div>
       </section>
 
-      <section class="content-block" id="gastropubs">
-        <h2>Best gastropubs near Bicester Village</h2>
+      <section class="content-block" id="nearby">
+        <h2>Near Bicester Village</h2>
         <p class="section-intro">
-          Great if you want restaurant-quality food in a more relaxed setting.
+          Great if you want a change of scene without going too far out of your way.
         </p>
+
+        <h3>Cafés &amp; bakeries</h3>
         <div class="listing-grid">
-          {{ gastropubs }}
+          {{ cafes_nearby }}
+        </div>
+
+        <h3>Gastropubs</h3>
+        <div class="listing-grid">
+          {{ gastropubs_nearby }}
+        </div>
+
+        <h3>Pubs &amp; bars</h3>
+        <div class="listing-grid">
+          {{ pubs_and_bars_nearby }}
         </div>
       </section>
 
-      <section class="content-block" id="pubs-bars">
-        <h2>Pubs &amp; bars</h2>
+      <section class="content-block" id="worth-the-drive">
+        <h2>Worth the drive</h2>
         <p class="section-intro">
-          Best for a drink, a casual bite, or somewhere to stop after shopping.
+          Better suited to a slower day, a countryside lunch or making more of the trip.
         </p>
-        <div class="listing-grid">
-          {{ pubs_and_bars }}
-        </div>
-      </section>
 
-      <section class="content-block" id="farm-shops">
-        <h2>Farm shops near Bicester</h2>
-        <p class="section-intro">
-          Perfect if you want to make more of the trip and pick up quality local produce.
-        </p>
+        <h3>Cotswolds cafés &amp; bakeries</h3>
         <div class="listing-grid">
-          {{ farm_shops }}
+          {{ cafes_worth_drive }}
+        </div>
+
+        <h3>Countryside gastropubs</h3>
+        <div class="listing-grid">
+          {{ gastropubs_worth_drive }}
+        </div>
+
+        <h3>Farm shops</h3>
+        <div class="listing-grid">
+          {{ farm_shops_worth_drive }}
         </div>
       </section>
 

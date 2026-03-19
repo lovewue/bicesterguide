@@ -270,25 +270,65 @@ def build_hotels_content(places: list[dict]) -> str:
 def build_eat_drink_content(places: list[dict]) -> str:
     content = EAT_DRINK_TEMPLATE
 
+    eat_drink_places = filter_places(places, category="eat-drink")
+
     restaurants_in_village = [
-        p for p in filter_places(places, category="eat-drink", subcategory="restaurant")
-        if area_in(p, {"bicester-village"})
+        p for p in eat_drink_places
+        if area_in(p, {"bicester-village"}) and "restaurant" in get_subcategories(p)
     ]
 
     cafes_in_village = [
-        p for p in filter_places(places, category="eat-drink", subcategory="cafe")
-        if area_in(p, {"bicester-village"})
+        p for p in eat_drink_places
+        if area_in(p, {"bicester-village"}) and any(
+            s in {"cafe", "bakery"} for s in get_subcategories(p)
+        )
     ]
 
-    gastropubs = filter_places(places, category="eat-drink", subcategory="gastropub")
-    pubs_and_bars = filter_places(places, category="eat-drink", subcategory="pub-bar")
-    farm_shops = filter_places(places, category="eat-drink", subcategory="farm-shop")
+    cafes_nearby = [
+        p for p in eat_drink_places
+        if not area_in(p, {"bicester-village"})
+        and any(s in {"cafe", "bakery"} for s in get_subcategories(p))
+        and get_distance_minutes(p) <= 20
+    ]
+
+    gastropubs_nearby = [
+        p for p in eat_drink_places
+        if "gastropub" in get_subcategories(p)
+        and get_distance_minutes(p) <= 20
+    ]
+
+    pubs_and_bars_nearby = [
+        p for p in eat_drink_places
+        if "pub-bar" in get_subcategories(p)
+        and get_distance_minutes(p) <= 20
+    ]
+
+    cafes_worth_drive = [
+        p for p in eat_drink_places
+        if any(s in {"cafe", "bakery"} for s in get_subcategories(p))
+        and 20 < get_distance_minutes(p) <= 40
+    ]
+
+    gastropubs_worth_drive = [
+        p for p in eat_drink_places
+        if "gastropub" in get_subcategories(p)
+        and 20 < get_distance_minutes(p) <= 40
+    ]
+
+    farm_shops_worth_drive = [
+        p for p in eat_drink_places
+        if "farm-shop" in get_subcategories(p)
+        and 20 < get_distance_minutes(p) <= 40
+    ]
 
     content = content.replace("{{ restaurants_in_village }}", render_cards(restaurants_in_village))
     content = content.replace("{{ cafes_in_village }}", render_cards(cafes_in_village))
-    content = content.replace("{{ gastropubs }}", render_cards(gastropubs))
-    content = content.replace("{{ pubs_and_bars }}", render_cards(pubs_and_bars))
-    content = content.replace("{{ farm_shops }}", render_cards(farm_shops))
+    content = content.replace("{{ cafes_nearby }}", render_cards(cafes_nearby))
+    content = content.replace("{{ gastropubs_nearby }}", render_cards(gastropubs_nearby))
+    content = content.replace("{{ pubs_and_bars_nearby }}", render_cards(pubs_and_bars_nearby))
+    content = content.replace("{{ cafes_worth_drive }}", render_cards(cafes_worth_drive))
+    content = content.replace("{{ gastropubs_worth_drive }}", render_cards(gastropubs_worth_drive))
+    content = content.replace("{{ farm_shops_worth_drive }}", render_cards(farm_shops_worth_drive))
 
     return content
 
