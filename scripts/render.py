@@ -229,7 +229,10 @@ def build_hotels_content(places: list[dict]) -> str:
 
     nearby = [
         p for p in all_hotels
-        if area_in(p, {"near-bicester", "chesterton", "murcott", "woodstock", "bicester-area"})
+        if area_in(
+            p,
+            {"near-bicester", "chesterton", "murcott", "woodstock", "bicester-area"},
+        )
     ]
 
     cotswolds = [
@@ -260,11 +263,17 @@ def build_eat_drink_content(places: list[dict]) -> str:
         if area_in(p, {"bicester-village"})
     ]
 
+    cafes_in_village = [
+        p for p in filter_places(places, category="eat-drink", subcategory="cafe")
+        if area_in(p, {"bicester-village"})
+    ]
+
     gastropubs = filter_places(places, category="eat-drink", subcategory="gastropub")
     pubs_and_bars = filter_places(places, category="eat-drink", subcategory="pub-bar")
     farm_shops = filter_places(places, category="eat-drink", subcategory="farm-shop")
 
     content = content.replace("{{ restaurants_in_village }}", render_cards(restaurants_in_village))
+    content = content.replace("{{ cafes_in_village }}", render_cards(cafes_in_village))
     content = content.replace("{{ gastropubs }}", render_cards(gastropubs))
     content = content.replace("{{ pubs_and_bars }}", render_cards(pubs_and_bars))
     content = content.replace("{{ farm_shops }}", render_cards(farm_shops))
@@ -332,7 +341,7 @@ def render_eat(places):
         OUTPUT_DIR / "eat-drink" / "index.html",
         render_page(
             "Eat & Drink Near Bicester Village",
-            "Restaurants, gastropubs, pubs, bars and farm shops near Bicester Village.",
+            "Restaurants, cafés, gastropubs, pubs, bars and farm shops near Bicester Village.",
             build_eat_drink_content(places),
         ),
     )
