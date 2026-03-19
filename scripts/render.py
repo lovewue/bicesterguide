@@ -264,7 +264,7 @@ def build_eat_drink_content(places: list[dict]) -> str:
     ]
 
     cafes_in_village = [
-        p for p in filter_places(places, category="eat-drink", subcategory="cafe")
+        p for p in filter_places(places, category="eat-drink", subcategory="café")
         if area_in(p, {"bicester-village"})
     ]
 
