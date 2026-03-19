@@ -1,34 +1,108 @@
 <section class="page-section">
   <div class="container">
+
     <div class="page-intro">
-      <p class="eyebrow">Stay near Bicester Village</p>
-      <h1>Best hotels near Bicester Village</h1>
+      <p class="eyebrow">Hotels</p>
+      <h1>Where to stay near Bicester Village</h1>
       <p>
-        Planning a trip to Bicester Village? Here are some of the best places to
-        stay nearby, whether you want a quick overnight stop, a comfortable base
-        for shopping, or a more relaxed weekend away.
+        Whether you want to stay as close as possible to Bicester Village, turn the trip
+        into a countryside break, or base yourself in London, here are some of the best
+        hotel options to consider.
       </p>
     </div>
 
+  </div>
+
+  <div class="sub-nav-wrap">
+    <nav class="sub-nav" aria-label="Hotel sections">
+      <a href="#luxury">Luxury stays</a>
+      <a href="#bicester">Bicester</a>
+      <a href="#nearby">Nearby</a>
+      <a href="#cotswolds">Cotswolds</a>
+      <a href="#london">London</a>
+    </nav>
+  </div>
+
+  <div class="container">
+
+    <section class="decision-strip" aria-label="How to choose where to stay">
+      <div class="decision-grid">
+        <div class="decision-card">
+          <h2>Best for convenience</h2>
+          <p>Stay in Bicester if you want the quickest and easiest access to the Village.</p>
+        </div>
+
+        <div class="decision-card">
+          <h2>Best for something special</h2>
+          <p>Choose a luxury stay if you want to make the trip feel more like an occasion.</p>
+        </div>
+
+        <div class="decision-card">
+          <h2>Best for a weekend break</h2>
+          <p>The Cotswolds work well if you want to turn shopping into a longer countryside stay.</p>
+        </div>
+
+        <div class="decision-card">
+          <h2>Best for day-trippers</h2>
+          <p>London can still work if you are visiting Bicester Village as part of a wider trip.</p>
+        </div>
+      </div>
+    </section>
+
     <div class="content-sections">
 
-      <section class="content-block">
-        <h2>Featured hotels</h2>
+      <section class="content-block" id="luxury">
+        <h2>Luxury &amp; destination stays</h2>
         <p class="section-intro">
-          A curated shortlist of the best places to stay near Bicester Village.
+          If you’re turning the trip into something special, these are the standout stays
+          worth planning around.
         </p>
         <div class="listing-grid">
-          {{ featured_hotels }}
+          {{ luxury_hotels }}
         </div>
       </section>
 
-      <section class="content-block">
-        <h2>More places to stay</h2>
+      <section class="content-block" id="bicester">
+        <h2>Hotels in Bicester</h2>
         <p class="section-intro">
-          Practical and reliable options for short stays, shopping trips and weekends away.
+          Best if you want to stay as close as possible to Bicester Village and keep the
+          trip simple.
         </p>
         <div class="listing-grid">
-          {{ all_hotels }}
+          {{ hotels_bicester }}
+        </div>
+      </section>
+
+      <section class="content-block" id="nearby">
+        <h2>Hotels near Bicester</h2>
+        <p class="section-intro">
+          Good options if you want something a little more spacious or polished without
+          staying too far away.
+        </p>
+        <div class="listing-grid">
+          {{ hotels_nearby }}
+        </div>
+      </section>
+
+      <section class="content-block" id="cotswolds">
+        <h2>Hotels in the Cotswolds</h2>
+        <p class="section-intro">
+          Ideal if you want to combine Bicester Village with a countryside break and some
+          of the most scenic parts of the region.
+        </p>
+        <div class="listing-grid">
+          {{ hotels_cotswolds }}
+        </div>
+      </section>
+
+      <section class="content-block" id="london">
+        <h2>Hotels in London</h2>
+        <p class="section-intro">
+          Useful if you are staying in the capital and planning a Bicester Village day trip
+          as part of a wider London itinerary.
+        </p>
+        <div class="listing-grid">
+          {{ hotels_london }}
         </div>
       </section>
 
