@@ -1054,5 +1054,27 @@
     "featured": false,
     "status": "live",
     "notes": ""
+  },
+  {
+    "name": "Esquires",
+    "slug": "esquires",
+    "category": "eat-drink",
+    "subcategory": "cafe",
+    "area": "graven-hill",
+    "distance_minutes": "5",
+    "description_short": "",
+    "description_long": "",
+    "address": "Graven Hill",
+    "postcode": "",
+    "website": "",
+    "booking_url": "",
+    "affiliate_url": "",
+    "google_maps_url": "",
+    "phone": "",
+    "email": "",
+    "image": "",
+    "featured": false,
+    "status": "live",
+    "notes": ""
   }
 ]
