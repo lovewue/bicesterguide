@@ -67,42 +67,46 @@ def split_values(value: str) -> list[str]:
     return [v.strip() for v in str(value).split("|") if v.strip()]
 
 
+def normalise(value) -> str:
+    return str(value).strip().lower().replace("é", "e")
+
+
 def to_bool(value) -> bool:
-    return str(value).strip().lower() in {"true", "1", "yes"}
+    return normalise(value) in {"true", "1", "yes"}
 
 
 def is_live(place: dict) -> bool:
-    return str(place.get("status", "")).strip().lower() == "live"
+    return normalise(place.get("status", "")) == "live"
 
 
 def get_categories(place: dict) -> list[str]:
     if place.get("categories"):
-        return split_values(place.get("categories", ""))
+        return [normalise(v) for v in split_values(place.get("categories", ""))]
     if place.get("category"):
-        return [str(place.get("category", "")).strip()]
+        return [normalise(place.get("category", ""))]
     return []
 
 
 def get_subcategories(place: dict) -> list[str]:
     if place.get("subcategories"):
-        return split_values(place.get("subcategories", ""))
+        return [normalise(v) for v in split_values(place.get("subcategories", ""))]
     if place.get("subcategory"):
-        return [str(place.get("subcategory", "")).strip()]
+        return [normalise(place.get("subcategory", ""))]
     return []
 
 
 def get_tags(place: dict) -> list[str]:
     if place.get("tags"):
-        return split_values(place.get("tags", ""))
+        return [normalise(v) for v in split_values(place.get("tags", ""))]
     return []
 
 
 def get_area(place: dict) -> str:
-    return str(place.get("area", "")).strip().lower()
+    return normalise(place.get("area", ""))
 
 
 def area_in(place: dict, valid_areas: set[str]) -> bool:
-    return get_area(place) in valid_areas
+    return get_area(place) in {normalise(a) for a in valid_areas}
 
 
 def filter_places(
@@ -115,6 +119,11 @@ def filter_places(
     featured_only: bool = False,
 ) -> list[dict]:
     results = []
+
+    category = normalise(category) if category else None
+    subcategory = normalise(subcategory) if subcategory else None
+    area = normalise(area) if area else None
+    tag = normalise(tag) if tag else None
 
     for place in places:
         if not is_live(place):
@@ -264,7 +273,7 @@ def build_eat_drink_content(places: list[dict]) -> str:
     ]
 
     cafes_in_village = [
-        p for p in filter_places(places, category="eat-drink", subcategory="café")
+        p for p in filter_places(places, category="eat-drink", subcategory="cafe")
         if area_in(p, {"bicester-village"})
     ]
 
