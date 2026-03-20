@@ -87,7 +87,7 @@ def get_categories(place: dict) -> list[str]:
     if place.get("categories"):
         return [normalise(v) for v in split_values(place.get("categories", ""))]
     if place.get("category"):
-        return [normalise(place.get("category", ""))]
+        return [normalise(v) for v in split_values(place.get("category", ""))]
     return []
 
 
@@ -95,7 +95,7 @@ def get_subcategories(place: dict) -> list[str]:
     if place.get("subcategories"):
         return [normalise(v) for v in split_values(place.get("subcategories", ""))]
     if place.get("subcategory"):
-        return [normalise(place.get("subcategory", ""))]
+        return [normalise(v) for v in split_values(place.get("subcategory", ""))]
     return []
 
 
@@ -127,6 +127,12 @@ def get_distance_minutes(place: dict) -> int:
         return int(float(text))
     except ValueError:
         return 999
+
+
+def has_subcategory(place: dict, *targets: str) -> bool:
+    subs = get_subcategories(place)
+    targets_norm = {normalise(t) for t in targets}
+    return any(target in subs for target in targets_norm)
 
 
 def filter_places(
@@ -269,49 +275,42 @@ def build_eat_drink_content(places: list[dict]) -> str:
 
     restaurants_in_village = [
         p for p in eat_drink_places
-        if area_in(p, {"bicester-village"}) and "restaurant" in get_subcategories(p)
+        if area_in(p, {"bicester-village"}) and has_subcategory(p, "restaurant")
     ]
 
     cafes_in_village = [
         p for p in eat_drink_places
-        if area_in(p, {"bicester-village"})
-        and any(s in {"cafe", "bakery"} for s in get_subcategories(p))
+        if area_in(p, {"bicester-village"}) and has_subcategory(p, "cafe", "bakery")
     ]
 
     cafes_nearby = [
         p for p in eat_drink_places
         if not area_in(p, {"bicester-village"})
-        and any(s in {"cafe", "bakery"} for s in get_subcategories(p))
+        and has_subcategory(p, "cafe", "bakery")
         and get_distance_minutes(p) <= 20
     ]
 
     gastropubs_nearby = [
         p for p in eat_drink_places
-        if "gastropub" in get_subcategories(p)
+        if has_subcategory(p, "gastropub")
         and get_distance_minutes(p) <= 20
     ]
 
     pubs_and_bars_nearby = [
         p for p in eat_drink_places
-        if "pub-bar" in get_subcategories(p)
+        if has_subcategory(p, "pub-bar")
         and get_distance_minutes(p) <= 20
     ]
 
     cafes_worth_drive = [
         p for p in eat_drink_places
-        if any(s in {"cafe", "bakery"} for s in get_subcategories(p))
+        if has_subcategory(p, "cafe", "bakery")
         and 20 < get_distance_minutes(p) <= 40
     ]
 
     gastropubs_worth_drive = [
         p for p in eat_drink_places
-        if "gastropub" in get_subcategories(p)
-        and 20 < get_distance_minutes(p) <= 40
-    ]
-
-    farm_shops_worth_drive = [
-        p for p in eat_drink_places
-        if "farm-shop" in get_subcategories(p)
+        if has_subcategory(p, "gastropub")
         and 20 < get_distance_minutes(p) <= 40
     ]
 
@@ -322,7 +321,6 @@ def build_eat_drink_content(places: list[dict]) -> str:
     content = content.replace("{{ pubs_and_bars_nearby }}", render_cards(pubs_and_bars_nearby))
     content = content.replace("{{ cafes_worth_drive }}", render_cards(cafes_worth_drive))
     content = content.replace("{{ gastropubs_worth_drive }}", render_cards(gastropubs_worth_drive))
-    content = content.replace("{{ farm_shops_worth_drive }}", render_cards(farm_shops_worth_drive))
 
     return content
 
@@ -334,34 +332,36 @@ def build_things_to_do_content(places: list[dict]) -> str:
 
     hidden_gems_nearby = [
         p for p in things_to_do_places
-        if "hidden-gem" in get_subcategories(p)
+        if has_subcategory(p, "hidden-gem")
         and get_distance_minutes(p) <= 20
     ]
 
     garden_centres_nearby = [
         p for p in things_to_do_places
-        if "garden-centre" in get_subcategories(p)
+        if has_subcategory(p, "garden-centre")
         and get_distance_minutes(p) <= 20
     ]
 
     day_trips_worth_drive = [
         p for p in things_to_do_places
-        if "day-trip" in get_subcategories(p)
+        if has_subcategory(p, "day-trip")
         and 20 < get_distance_minutes(p) <= 40
     ]
 
     cotswolds_worth_drive = [
         p for p in things_to_do_places
-        if "cotswolds" in get_subcategories(p)
+        if has_subcategory(p, "cotswolds")
         and 20 < get_distance_minutes(p) <= 40
     ]
 
     breweries_vineyards = [
         p for p in things_to_do_places
-        if any(
-        "brewery" in s or "vineyard" in s
-        for s in get_subcategories(p)
-        )
+        if has_subcategory(p, "brewery", "vineyard")
+    ]
+
+    farm_shops = [
+        p for p in things_to_do_places
+        if has_subcategory(p, "farm-shop")
     ]
 
     content = content.replace("{{ hidden_gems_nearby }}", render_cards(hidden_gems_nearby))
@@ -369,6 +369,7 @@ def build_things_to_do_content(places: list[dict]) -> str:
     content = content.replace("{{ day_trips_worth_drive }}", render_cards(day_trips_worth_drive))
     content = content.replace("{{ cotswolds_worth_drive }}", render_cards(cotswolds_worth_drive))
     content = content.replace("{{ breweries_vineyards }}", render_cards(breweries_vineyards))
+    content = content.replace("{{ farm_shops }}", render_cards(farm_shops))
 
     return content
 
@@ -432,7 +433,7 @@ def render_things(places: list[dict]) -> None:
         OUTPUT_DIR / "things-to-do" / "index.html",
         render_page(
             "Things to Do Near Bicester Village",
-            "Hidden gems, day trips, breweries, vineyards, the Cotswolds and more things to do near Bicester Village.",
+            "Hidden gems, day trips, breweries, vineyards, farm shops, the Cotswolds and more things to do near Bicester Village.",
             build_things_to_do_content(places),
         ),
     )
