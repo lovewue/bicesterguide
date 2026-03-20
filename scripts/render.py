@@ -209,10 +209,9 @@ def place_label(place: dict) -> str:
 def render_card(place: dict) -> str:
     badge = ""
     tags = get_tags(place)
-    distance = get_distance_minutes(place)
     area = get_area(place).replace("-", " ").title()
 
-    meta = f"{distance} min drive" if distance != 999 else area
+    meta = area
 
     if "luxury" in tags:
         badge = '<span class="badge">Luxury</span>'
