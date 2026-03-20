@@ -359,7 +359,6 @@ def build_things_to_do_content(places: list[dict]) -> str:
     breweries_vineyards = [
         p for p in things_to_do_places
         if any(s in {"brewery", "vineyard"} for s in get_subcategories(p))
-        and 20 < get_distance_minutes(p) <= 40
     ]
 
     content = content.replace("{{ hidden_gems_nearby }}", render_cards(hidden_gems_nearby))
