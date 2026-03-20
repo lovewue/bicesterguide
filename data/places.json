@@ -1080,7 +1080,7 @@
   {
     "name": "Dayleford Farm",
     "slug": "daylesford",
-    "category": "",
+    "category": "eat-drink | things-to-do",
     "subcategory": "farm-shop|restaurant",
     "area": "cotswolds",
     "distance_minutes": "55",
@@ -1102,7 +1102,7 @@
   {
     "name": "Diddly Squat Farm",
     "slug": "diddly-squat",
-    "category": "",
+    "category": "things-to-do",
     "subcategory": "farm-shop",
     "area": "cotswolds",
     "distance_minutes": "45",
@@ -1124,7 +1124,7 @@
   {
     "name": "Farmer's Dog",
     "slug": "farmers-dog",
-    "category": "",
+    "category": "eat-drink",
     "subcategory": "gastropub",
     "area": "cotswolds",
     "distance_minutes": "40",
@@ -1168,7 +1168,7 @@
   {
     "name": "Sandy Lane Farm",
     "slug": "sandy-lane",
-    "category": "",
+    "category": "things-to-do",
     "subcategory": "farm-shop",
     "area": "chilterns",
     "distance_minutes": "30",
@@ -1190,7 +1190,7 @@
   {
     "name": "Dunkertons",
     "slug": "dunkertons",
-    "category": "things-to-do",
+    "category": "eat-drink | things-to-do",
     "subcategory": "brewery|restaurant",
     "area": "cotswolds",
     "distance_minutes": "60",
@@ -1212,7 +1212,7 @@
   {
     "name": "Worton Kitchen Garden",
     "slug": "worton",
-    "category": "",
+    "category": "eat-drink | things-to-do",
     "subcategory": "farm-shop|restaurant",
     "area": "",
     "distance_minutes": "25",
