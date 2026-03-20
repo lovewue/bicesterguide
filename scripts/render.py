@@ -97,7 +97,7 @@ def get_subcategories(place: dict) -> list[str]:
     if place.get("subcategory"):
         return [normalise(place.get("subcategory", ""))]
     return []
-    
+
 
 def get_tags(place: dict) -> list[str]:
     if place.get("tags"):
@@ -210,7 +210,6 @@ def render_card(place: dict) -> str:
     badge = ""
     tags = get_tags(place)
     area = get_area(place).replace("-", " ").title()
-
     meta = area
 
     if "luxury" in tags:
@@ -331,15 +330,43 @@ def build_eat_drink_content(places: list[dict]) -> str:
 def build_things_to_do_content(places: list[dict]) -> str:
     content = THINGS_TO_DO_TEMPLATE
 
-    hidden_gems = filter_places(places, category="things-to-do", subcategory="hidden-gem")
-    day_trips = filter_places(places, category="things-to-do", subcategory="day-trip")
-    cotswolds = filter_places(places, category="things-to-do", subcategory="cotswolds")
-    garden_centres = filter_places(places, category="things-to-do", subcategory="garden-centre")
+    things_to_do_places = filter_places(places, category="things-to-do")
 
-    content = content.replace("{{ hidden_gems }}", render_cards(hidden_gems))
-    content = content.replace("{{ day_trips }}", render_cards(day_trips))
-    content = content.replace("{{ cotswolds }}", render_cards(cotswolds))
-    content = content.replace("{{ garden_centres }}", render_cards(garden_centres))
+    hidden_gems_nearby = [
+        p for p in things_to_do_places
+        if "hidden-gem" in get_subcategories(p)
+        and get_distance_minutes(p) <= 20
+    ]
+
+    garden_centres_nearby = [
+        p for p in things_to_do_places
+        if "garden-centre" in get_subcategories(p)
+        and get_distance_minutes(p) <= 20
+    ]
+
+    day_trips_worth_drive = [
+        p for p in things_to_do_places
+        if "day-trip" in get_subcategories(p)
+        and 20 < get_distance_minutes(p) <= 40
+    ]
+
+    cotswolds_worth_drive = [
+        p for p in things_to_do_places
+        if "cotswolds" in get_subcategories(p)
+        and 20 < get_distance_minutes(p) <= 40
+    ]
+
+    breweries_vineyards = [
+        p for p in things_to_do_places
+        if any(s in {"brewery", "vineyard"} for s in get_subcategories(p))
+        and 20 < get_distance_minutes(p) <= 40
+    ]
+
+    content = content.replace("{{ hidden_gems_nearby }}", render_cards(hidden_gems_nearby))
+    content = content.replace("{{ garden_centres_nearby }}", render_cards(garden_centres_nearby))
+    content = content.replace("{{ day_trips_worth_drive }}", render_cards(day_trips_worth_drive))
+    content = content.replace("{{ cotswolds_worth_drive }}", render_cards(cotswolds_worth_drive))
+    content = content.replace("{{ breweries_vineyards }}", render_cards(breweries_vineyards))
 
     return content
 
@@ -403,7 +430,7 @@ def render_things(places: list[dict]) -> None:
         OUTPUT_DIR / "things-to-do" / "index.html",
         render_page(
             "Things to Do Near Bicester Village",
-            "Hidden gems, day trips, the Cotswolds and more things to do near Bicester Village.",
+            "Hidden gems, day trips, breweries, vineyards, the Cotswolds and more things to do near Bicester Village.",
             build_things_to_do_content(places),
         ),
     )

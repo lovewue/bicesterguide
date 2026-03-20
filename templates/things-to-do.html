@@ -1,53 +1,91 @@
 <section class="page-section">
   <div class="container">
+
     <div class="page-intro">
-      <p class="eyebrow">Things to do</p>
-      <h1>Things to do near Bicester Village</h1>
+      <p class="eyebrow">Eat &amp; Drink</p>
+      <h1>Where to eat and drink near Bicester Village</h1>
       <p>
-        Make more of your trip with ideas beyond shopping, from hidden gems and
-        day trips to the Cotswolds and garden centres nearby.
+        From cafés and restaurants in Bicester Village itself to nearby pubs, gastropubs and countryside favourites,
+        here are some of the best places to eat and drink before, during or after your visit.
       </p>
     </div>
 
+  </div>
+
+  <div class="sub-nav-wrap">
+    <nav class="sub-nav" aria-label="Eat and drink sections">
+      <a href="#in-village">In Bicester Village</a>
+      <a href="#nearby">Nearby</a>
+      <a href="#worth-the-drive">Worth the drive</a>
+    </nav>
+  </div>
+
+  <div class="container">
     <div class="content-sections">
 
-      <section class="content-block">
-        <h2>Hidden gems</h2>
+      <section class="content-block" id="in-village">
+        <h2>In Bicester Village</h2>
         <p class="section-intro">
-          Great local finds and less obvious places worth knowing about.
+          Ideal if you want to stay close to the shops and keep things simple.
         </p>
+
+        <h3>Restaurants</h3>
         <div class="listing-grid">
-          {{ hidden_gems }}
+          {{ restaurants_in_village }}
+        </div>
+
+        <h3>Cafés</h3>
+        <div class="listing-grid">
+          {{ cafes_in_village }}
         </div>
       </section>
 
-      <section class="content-block">
-        <h2>Day trips</h2>
+      <section class="content-block" id="nearby">
+        <h2>Near Bicester Village</h2>
         <p class="section-intro">
-          Easy places to add to your day if you want to make more of the journey.
+          Great if you want a change of scene without going too far out of your way.
         </p>
+
+        <h3>Cafés &amp; bakeries</h3>
         <div class="listing-grid">
-          {{ day_trips }}
+          {{ cafes_nearby }}
+        </div>
+
+        <h3>Gastropubs</h3>
+        <div class="listing-grid">
+          {{ gastropubs_nearby }}
+        </div>
+
+        <h3>Pubs &amp; bars</h3>
+        <div class="listing-grid">
+          {{ pubs_and_bars_nearby }}
         </div>
       </section>
 
-      <section class="content-block">
-        <h2>The Cotswolds</h2>
+      <section class="content-block" id="worth-the-drive">
+        <h2>Worth the drive</h2>
         <p class="section-intro">
-          Beautiful villages, countryside and scenic stops within easy reach.
+          Better suited to a slower day, a countryside lunch or making more of the trip.
         </p>
-        <div class="listing-grid">
-          {{ cotswolds }}
-        </div>
-      </section>
 
-      <section class="content-block">
-        <h2>Garden centres &amp; nurseries</h2>
-        <p class="section-intro">
-          Relaxed stops for plants, gifts, coffee and a slower pace.
-        </p>
+        <h3>Cotswolds cafés &amp; bakeries</h3>
         <div class="listing-grid">
-          {{ garden_centres }}
+          {{ cafes_worth_drive }}
+        </div>
+
+        <h3>Countryside gastropubs</h3>
+        <div class="listing-grid">
+          {{ gastropubs_worth_drive }}
+        </div>
+
+        <h3>Breweries &amp; vineyards</h3>
+        <div class="listing-grid">
+          {{ breweries_vineyards }}
+        </div>
+
+        <h3>Farm shops</h3>
+        <div class="listing-grid">
+          {{ farm_shops_worth_drive }}
         </div>
       </section>
 
