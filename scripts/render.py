@@ -302,16 +302,17 @@ def build_eat_drink_content(places: list[dict]) -> str:
         and get_distance_minutes(p) <= 20
     ]
 
-    cafes_worth_drive = [
+    restaurants_worth_drive = [
         p for p in eat_drink_places
-        if has_subcategory(p, "cafe", "bakery")
-        and 20 < get_distance_minutes(p) <= 40
+        if has_subcategory(p, "restaurant", "cafe", "bakery")
+        and get_distance_minutes(p) > 20
+        and not area_in(p, {"bicester-village"})
     ]
 
     gastropubs_worth_drive = [
         p for p in eat_drink_places
         if has_subcategory(p, "gastropub")
-        and 20 < get_distance_minutes(p) <= 40
+        and get_distance_minutes(p) > 20
     ]
 
     content = content.replace("{{ restaurants_in_village }}", render_cards(restaurants_in_village))
@@ -319,7 +320,7 @@ def build_eat_drink_content(places: list[dict]) -> str:
     content = content.replace("{{ cafes_nearby }}", render_cards(cafes_nearby))
     content = content.replace("{{ gastropubs_nearby }}", render_cards(gastropubs_nearby))
     content = content.replace("{{ pubs_and_bars_nearby }}", render_cards(pubs_and_bars_nearby))
-    content = content.replace("{{ cafes_worth_drive }}", render_cards(cafes_worth_drive))
+    content = content.replace("{{ restaurants_worth_drive }}", render_cards(restaurants_worth_drive))
     content = content.replace("{{ gastropubs_worth_drive }}", render_cards(gastropubs_worth_drive))
 
     return content
