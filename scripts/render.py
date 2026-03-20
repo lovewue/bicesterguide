@@ -39,7 +39,7 @@ HOMEPAGE_TEMPLATE = load_text(TEMPLATES_DIR / "homepage.html")
 HOTELS_TEMPLATE = load_text(TEMPLATES_DIR / "hotels.html")
 EAT_DRINK_TEMPLATE = load_text(TEMPLATES_DIR / "eat-drink.html")
 THINGS_TO_DO_TEMPLATE = load_text(TEMPLATES_DIR / "things-to-do.html")
-PLAN_TEMPLATE = load_text(TEMPLATES_DIR / "plan.html")
+USEFUL_INFO_TEMPLATE = load_text(TEMPLATES_DIR / "useful-info.html")
 
 
 # -----------------------------------------------------------------------------
@@ -97,7 +97,7 @@ def get_subcategories(place: dict) -> list[str]:
     if place.get("subcategory"):
         return [normalise(place.get("subcategory", ""))]
     return []
-
+    
 
 def get_tags(place: dict) -> list[str]:
     if place.get("tags"):
@@ -212,10 +212,7 @@ def render_card(place: dict) -> str:
     distance = get_distance_minutes(place)
     area = get_area(place).replace("-", " ").title()
 
-    if distance != 999:
-        meta = f"{distance} min drive"
-    else:
-        meta = area
+    meta = f"{distance} min drive" if distance != 999 else area
 
     if "luxury" in tags:
         badge = '<span class="badge">Luxury</span>'
@@ -279,9 +276,8 @@ def build_eat_drink_content(places: list[dict]) -> str:
 
     cafes_in_village = [
         p for p in eat_drink_places
-        if area_in(p, {"bicester-village"}) and any(
-            s in {"cafe", "bakery"} for s in get_subcategories(p)
-        )
+        if area_in(p, {"bicester-village"})
+        and any(s in {"cafe", "bakery"} for s in get_subcategories(p))
     ]
 
     cafes_nearby = [
@@ -349,16 +345,20 @@ def build_things_to_do_content(places: list[dict]) -> str:
     return content
 
 
-def build_plan_content(places: list[dict]) -> str:
-    content = PLAN_TEMPLATE
+def build_useful_info_content(places: list[dict]) -> str:
+    content = USEFUL_INFO_TEMPLATE
 
-    transport = filter_places(places, category="plan", subcategory="transport")
-    salons = filter_places(places, category="plan", subcategory="salon")
-    useful_services = filter_places(places, category="plan", subcategory="useful-service")
+    transport = filter_places(places, category="useful-info", subcategory="transport")
+    before_you_go = filter_places(places, category="useful-info", subcategory="before-you-go")
+    on_the_day = filter_places(places, category="useful-info", subcategory="on-the-day")
+    useful_services = filter_places(places, category="useful-info", subcategory="useful-service")
+    salons = filter_places(places, category="useful-info", subcategory="salon")
 
     content = content.replace("{{ transport }}", render_cards(transport))
-    content = content.replace("{{ salons }}", render_cards(salons))
+    content = content.replace("{{ before_you_go }}", render_cards(before_you_go))
+    content = content.replace("{{ on_the_day }}", render_cards(on_the_day))
     content = content.replace("{{ useful_services }}", render_cards(useful_services))
+    content = content.replace("{{ salons }}", render_cards(salons))
 
     return content
 
@@ -393,7 +393,7 @@ def render_eat(places: list[dict]) -> None:
         OUTPUT_DIR / "eat-drink" / "index.html",
         render_page(
             "Eat & Drink Near Bicester Village",
-            "Restaurants, cafés, gastropubs, pubs, bars and farm shops near Bicester Village.",
+            "Restaurants, cafés, pubs, gastropubs and countryside favourites near Bicester Village.",
             build_eat_drink_content(places),
         ),
     )
@@ -410,13 +410,13 @@ def render_things(places: list[dict]) -> None:
     )
 
 
-def render_plan(places: list[dict]) -> None:
+def render_useful_info(places: list[dict]) -> None:
     write_page(
-        OUTPUT_DIR / "plan" / "index.html",
+        OUTPUT_DIR / "useful-info" / "index.html",
         render_page(
-            "Plan Your Visit",
-            "Transport, salons and useful services near Bicester Village.",
-            build_plan_content(places),
+            "Useful Info for Bicester Village",
+            "Getting there, practical tips and useful information for planning your visit to Bicester Village.",
+            build_useful_info_content(places),
         ),
     )
 
@@ -433,7 +433,7 @@ def main() -> None:
     render_hotels(places)
     render_eat(places)
     render_things(places)
-    render_plan(places)
+    render_useful_info(places)
 
     print("Site build complete")
 
