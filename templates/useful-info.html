@@ -13,34 +13,65 @@
   </div>
 
   <div class="sub-nav-wrap">
-    <nav class="sub-nav">
+    <nav class="sub-nav" aria-label="Useful info sections">
       <a href="#getting-there">Getting there</a>
       <a href="#before-you-go">Before you go</a>
       <a href="#on-the-day">On the day</a>
+      <a href="#extras">Extras</a>
     </nav>
   </div>
 
   <div class="container">
     <div class="content-sections">
 
+      <!-- Getting there -->
       <section class="content-block" id="getting-there">
         <h2>Getting there</h2>
+        <p class="section-intro">
+          Options for reaching Bicester Village by train, car or other transport.
+        </p>
         <div class="listing-grid">
           {{ transport }}
         </div>
       </section>
 
+      <!-- Before you go -->
       <section class="content-block" id="before-you-go">
         <h2>Before you go</h2>
+        <p class="section-intro">
+          Opening hours, timing tips and things to know before your visit.
+        </p>
         <div class="listing-grid">
-          {{ useful_services }}
+          {{ before_you_go }}
         </div>
       </section>
 
+      <!-- On the day -->
       <section class="content-block" id="on-the-day">
         <h2>On the day</h2>
+        <p class="section-intro">
+          Practical information and services available while you're there.
+        </p>
+        <div class="listing-grid">
+          {{ on_the_day }}
+        </div>
+      </section>
+
+      <!-- Extras -->
+      <section class="content-block" id="extras">
+        <h2>Extras</h2>
+        <p class="section-intro">
+          A few useful extras nearby — from salons to everyday essentials.
+        </p>
+
+        <h3>Salons</h3>
         <div class="listing-grid">
           {{ salons }}
+        </div>
+
+        <h3>Useful services &amp; essentials</h3>
+        <div class="listing-grid">
+          {{ useful_services }}
         </div>
       </section>
 
