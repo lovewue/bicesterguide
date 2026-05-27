@@ -465,7 +465,7 @@ a {
 .hotel-hero img {
   display: block;
   width: 100%;
-  height: 240px;
+  height: 300px;
   object-fit: cover;
   border-radius: 18px;
 }
@@ -533,8 +533,10 @@ a {
   grid-template-columns: 1fr;
 }
 
-.hotel-hero img {
-  height: 300px;
+@media (max-width: 900px) {
+  .hotel-hero img {
+    height: 220px;
+  }
 }
 
 @media (max-width: 640px) {
