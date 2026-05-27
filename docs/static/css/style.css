@@ -555,13 +555,7 @@ a {
   }
 }
 
-.hotel-gallery {
-  grid-template-columns: 1fr;
-}
 
-.hotel-gallery img {
-  height: 240px;
-}
 
 @media (max-width: 640px) {
   .card {
