@@ -512,6 +512,23 @@ a {
   color: #555555;
 }
 
+.hotel-gallery {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.hotel-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
 
 /* ==========================================================================
    Responsive
@@ -537,6 +554,14 @@ a {
   .hotel-hero img {
     height: 220px;
   }
+}
+
+.hotel-gallery {
+  grid-template-columns: 1fr;
+}
+
+.hotel-gallery img {
+  height: 240px;
 }
 
 @media (max-width: 640px) {
