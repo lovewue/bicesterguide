@@ -457,22 +457,22 @@ a {
    ========================================================================== */
 
 .hotel-hero {
-  max-width: 1000px;
-  margin: 0 auto 32px;
+  max-width: 900px;
+  margin: 0 auto 28px;
   padding: 0 20px;
 }
 
 .hotel-hero img {
   display: block;
   width: 100%;
-  height: 380px;
+  height: 180px;
   object-fit: cover;
   border-radius: 18px;
 }
 
 .hotel-layout {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) 320px;
+  grid-template-columns: minmax(0, 2fr) 300px;
   gap: 32px;
   align-items: start;
 }
@@ -511,7 +511,6 @@ a {
   margin: 0;
   color: #555555;
 }
-
 
 
 /* ==========================================================================
