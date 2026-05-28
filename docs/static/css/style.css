@@ -587,7 +587,7 @@ a {
 
 .sub-nav-wrap {
   position: sticky;
-  top: 0;
+  top: 82px;
   z-index: 30;
   margin: 0 0 40px;
   background: rgba(247, 245, 241, 0.96);
