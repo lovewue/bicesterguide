@@ -229,9 +229,11 @@ a {
 
 .home-hero-title h1 {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   font-size: 4rem;
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
 }
 
 .home-intro-section {
