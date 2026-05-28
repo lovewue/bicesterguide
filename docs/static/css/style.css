@@ -327,7 +327,8 @@ a {
 .home-feature-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px 24px;
+  column-gap: 24px;
+  row-gap: 72px;
 }
 
 .home-feature-card {
@@ -368,15 +369,17 @@ a {
 }
 
 .home-stripline h2 {
-  margin: 0 0 14px;
-  font-size: 3rem;
-  line-height: 1.1;
+  margin: 0 0 16px;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 .home-stripline p {
   margin: 0;
-  font-size: 1.3rem;
-  color: #555555;
+  font-size: 1.12rem;
+  color: #666666;
 }
 
 
