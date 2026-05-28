@@ -291,7 +291,7 @@ a {
 }
 
 .home-trip-section .container {
-  max-width: 900px;
+  max-width: 1100px;
 }
 .home-intro-section p {
   margin: 0;
@@ -309,9 +309,10 @@ a {
 
 .home-trip-section h2 {
   margin: 0 0 16px;
-  font-size: 2.9rem;
+  font-size: 2.2rem;
   line-height: 1.15;
   letter-spacing: -0.03em;
+  font-weight: 600;
 }
 
 .home-trip-section p:last-child {
