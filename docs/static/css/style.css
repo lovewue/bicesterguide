@@ -112,44 +112,42 @@ a {
 
 .site-header {
   background: #ffffff;
-  border-bottom: 1px solid #e8e2da;
+  border-bottom: 1px solid #eeeeee;
 }
 
 .header-inner {
-  display: flex;
+  display: grid;
+  grid-template-columns: 220px 1fr;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 20px;
-}
-
-.site-logo-link {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
+  gap: 40px;
+  padding: 18px 24px;
+  max-width: 1180px;
+  margin: 0 auto;
 }
 
 .site-logo {
   display: block;
-  max-width: 180px;
+  max-width: 190px;
   width: 100%;
   height: auto;
 }
 
 .site-nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .site-nav a {
   text-decoration: none;
-  font-size: 0.96rem;
-  color: #3f3f3f;
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: #111111;
 }
 
 .site-nav a:hover {
-  color: #000000;
+  color: #8a7d6d;
 }
 
 /* ==========================================================================
@@ -760,5 +758,23 @@ a {
   .sub-nav a {
     white-space: nowrap;
     flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px 20px;
+  }
+
+  .site-nav {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 16px 22px;
+  }
+
+  .site-logo {
+    max-width: 180px;
   }
 }
