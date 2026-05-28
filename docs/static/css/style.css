@@ -153,55 +153,36 @@ a {
    Footer
    ========================================================================== */
 
-.site-footer {
-  background: #ffffff;
-  border-top: 1px solid #e8e2da;
-}
-
-.footer-inner {
-  padding: 24px 20px;
-  text-align: center;
-}
-
-.footer-inner p {
-  margin: 0;
-  font-size: 0.92rem;
-  color: #6d6d6d;
-}
-
 .footer-directory {
-  padding: 72px 0 56px;
+  padding: 48px 0 52px;
   background: #f5f3ef;
   border-top: 1px solid #e8e2da;
 }
 
-.site-footer {
-  background: #f5f3ef;
-  border-top: 1px solid #e8e2da;
+.footer-directory-layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 42px;
+  align-items: start;
 }
 
-.footer-directory {
-  padding: 72px 0 56px;
-  background: #f5f3ef;
-  border-top: 1px solid #e8e2da;
-}
-
-.home-directory-brand {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 48px;
-  letter-spacing: -0.03em;
+.footer-directory-brand img {
+  display: block;
+  max-width: 170px;
+  height: auto;
 }
 
 .directory-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 44px 28px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 34px 28px;
 }
 
 .directory-column h3 {
-  margin: 0 0 14px;
-  font-size: 1.1rem;
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .directory-column ul {
@@ -211,9 +192,26 @@ a {
 }
 
 .directory-column li {
-  padding: 4px 0;
-  color: #444444;
-  line-height: 1.5;
+  padding: 2px 0;
+  color: #222222;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.site-footer {
+  background: #ffffff;
+  border-top: 1px solid #e8e2da;
+}
+
+.footer-inner {
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-inner p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #777777;
 }
 
 /* ==========================================================================
@@ -704,11 +702,12 @@ a {
   .page-intro h1 {
     font-size: 2.1rem;
   }
+  .hotel-layout {
+  grid-template-columns: 1fr;
+  }
 }
 
-.hotel-layout {
-  grid-template-columns: 1fr;
-}
+
 
 @media (max-width: 900px) {
   .hotel-hero img {
