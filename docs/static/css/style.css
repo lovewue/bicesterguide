@@ -162,8 +162,6 @@ a {
 .footer-directory-layout {
   display: grid;
   grid-template-columns: 180px 1fr;
-  gap: 42px;
-  align-items: start;
 }
 
 .footer-directory-brand img {
@@ -212,6 +210,12 @@ a {
   margin: 0;
   font-size: 0.82rem;
   color: #777777;
+}
+
+.footer-logo-column img {
+  display: block;
+  max-width: 170px;
+  height: auto;
 }
 
 /* ==========================================================================
