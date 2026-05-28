@@ -200,6 +200,14 @@ a {
   line-height: 1.45;
 }
 
+.directory-column a {
+  text-decoration: none;
+}
+
+.directory-column a:hover {
+  color: #8a7d6d;
+}
+
 .site-footer {
   background: #ffffff;
   
