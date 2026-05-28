@@ -500,6 +500,17 @@ a {
   line-height: 1.3;
 }
 
+.content-subsection {
+  margin-top: 48px;
+}
+
+.content-subsection h3 {
+  margin: 0 0 18px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
 .section-intro {
   margin: 0 0 20px;
   color: #5a5a5a;
