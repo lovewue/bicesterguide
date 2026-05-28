@@ -70,8 +70,8 @@ a {
 .eyebrow {
   margin: 0 0 12px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
   font-weight: 600;
   color: #8a7d6d;
 }
@@ -290,6 +290,9 @@ a {
   max-width: 980px;
 }
 
+.home-trip-section .container {
+  max-width: 900px;
+}
 .home-intro-section p {
   margin: 0;
   text-align: center;
@@ -299,27 +302,23 @@ a {
 }
 
 .home-trip-section {
-  padding: 72px 0;
+  padding: 56px 0 64px;
   text-align: center;
   background: #ffffff;
 }
 
-.home-trip-section .container {
-  max-width: 900px;
-}
-
 .home-trip-section h2 {
-  margin: 0 0 18px;
-  font-size: 3rem;
+  margin: 0 0 16px;
+  font-size: 2.9rem;
   line-height: 1.15;
+  letter-spacing: -0.03em;
 }
 
 .home-trip-section p:last-child {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.12rem;
   color: #666666;
 }
-
 .home-feature-section {
   padding: 64px 0 80px;
 }
