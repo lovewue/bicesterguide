@@ -117,7 +117,7 @@ a {
 
 .header-inner {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr;
   align-items: center;
   gap: 40px;
   padding: 18px 24px;
@@ -127,16 +127,15 @@ a {
 
 .site-logo {
   display: block;
-  max-width: 190px;
+  max-width: 250px;
   width: 100%;
   height: auto;
 }
 
 .site-nav {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 32px;
+  gap: 56px;
 }
 
 .site-nav a {
