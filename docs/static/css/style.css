@@ -275,7 +275,7 @@ a {
 
 .home-hero-title h1 {
   margin: 0;
-  font-family: "Century Gothic", Futura, "CenturyGothic", AppleGothic, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 600;
   font-size: 3.4rem;
   line-height: 1.08;
@@ -350,7 +350,7 @@ a {
   margin: 0 0 10px;
   font-size: 1.15rem;
   line-height: 1.3;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
