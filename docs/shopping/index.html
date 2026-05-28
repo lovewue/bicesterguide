@@ -33,22 +33,22 @@
     <div class="page-intro category-intro">
       <p class="eyebrow">Shopping</p>
 
-      <h1>Shopping in and around Bicester</h1>
+      <h1>Shopping &amp; Local Businesses</h1>
 
       <p>
-        Beyond Bicester Village, discover farm shops, garden centres,
-        antique stores, independent boutiques and destination shopping
-        spots across Oxfordshire and the Cotswolds.
+        Beyond Bicester Village, discover farm shops, antique and vintage stores,
+        furniture outlets, garden centres, florists and local businesses across
+        Bicester, Oxfordshire and the Cotswolds.
       </p>
     </div>
 
     <div class="sub-nav-wrap">
-      <nav class="sub-nav">
+      <nav class="sub-nav" aria-label="Shopping sections">
         <a href="#farm-shops">Farm Shops</a>
+        <a href="#antique-vintage">Antique &amp; Vintage Stores</a>
+        <a href="#furniture-outlets">Furniture Outlets</a>
         <a href="#garden-centres">Garden Centres</a>
-        <a href="#antique-vintage">Antiques & Vintage</a>
-        <a href="#furniture-home">Furniture & Home</a>
-        <a href="#local-businesses">Local Businesses</a>
+        <a href="#florists">Florists</a>
       </nav>
     </div>
 
@@ -56,91 +56,60 @@
 
       <section class="content-block" id="farm-shops">
         <h2>Farm Shops</h2>
-
         <p class="section-intro">
-          Local produce, artisan food, cafés and countryside shopping
-          destinations within easy reach of Bicester.
+          Local produce, artisan food, cafés and countryside shopping destinations within easy reach of Bicester.
         </p>
-
         <div class="listing-grid">
-
           <article class="listing-card">
   <h3>Coming soon</h3>
   <p>We’re currently adding recommendations for this section.</p>
 </article>
+        </div>
+      </section>
 
+      <section class="content-block" id="antique-vintage">
+        <h2>Antique &amp; Vintage Stores</h2>
+        <p class="section-intro">
+          Characterful antique shops, vintage finds and one-off pieces across the region.
+        </p>
+        <div class="listing-grid">
+          <article class="listing-card">
+  <h3>Coming soon</h3>
+  <p>We’re currently adding recommendations for this section.</p>
+</article>
+        </div>
+      </section>
+
+      <section class="content-block" id="furniture-outlets">
+        <h2>Furniture Outlets</h2>
+        <p class="section-intro">
+          Destination interiors, homeware and design-led shopping near Bicester Village.
+        </p>
+        <div class="listing-grid">
+          {{FURNITURE_OUTLET_CARDS}}
         </div>
       </section>
 
       <section class="content-block" id="garden-centres">
         <h2>Garden Centres</h2>
-
         <p class="section-intro">
-          Relaxed shopping destinations with plants, gifts, cafés and
-          home inspiration.
+          Relaxed shopping destinations with plants, gifts, cafés and home inspiration.
         </p>
-
         <div class="listing-grid">
-
           <article class="listing-card">
   <h3>Coming soon</h3>
   <p>We’re currently adding recommendations for this section.</p>
 </article>
-
         </div>
       </section>
 
-      <section class="content-block" id="antique-vintage">
-        <h2>Antiques & Vintage</h2>
-
+      <section class="content-block" id="florists">
+        <h2>Florists</h2>
         <p class="section-intro">
-          Characterful independent shops and vintage finds across the
-          region.
+          Local florists, flower farms and beautiful places for seasonal flowers and gifts.
         </p>
-
         <div class="listing-grid">
-
-          <article class="listing-card">
-  <h3>Coming soon</h3>
-  <p>We’re currently adding recommendations for this section.</p>
-</article>
-
-        </div>
-      </section>
-
-      <section class="content-block" id="furniture-home">
-        <h2>Furniture & Home</h2>
-
-        <p class="section-intro">
-          Destination interiors, homeware and design-led shopping near
-          Bicester Village.
-        </p>
-
-        <div class="listing-grid">
-
-          <article class="listing-card">
-  <h3>Coming soon</h3>
-  <p>We’re currently adding recommendations for this section.</p>
-</article>
-
-        </div>
-      </section>
-
-      <section class="content-block" id="local-businesses">
-        <h2>Independent Local Businesses</h2>
-
-        <p class="section-intro">
-          A growing collection of independent shops, makers and local
-          favourites worth discovering.
-        </p>
-
-        <div class="listing-grid">
-
-          <article class="listing-card">
-  <h3>Coming soon</h3>
-  <p>We’re currently adding recommendations for this section.</p>
-</article>
-
+          {{FLORIST_CARDS}}
         </div>
       </section>
 
@@ -149,7 +118,6 @@
   </div>
 
 </section>
-
   </main>
 
   <section class="footer-directory">
@@ -220,23 +188,27 @@
 </div>
 
 <div class="directory-column">
-  <h3>Shopping & Local Businesses</h3>
+  <h3>
+    <a href="../shopping/">
+      Shopping &amp; Local Businesses
+    </a>
+  </h3>
 
   <ul>
     <li>
-      <a href="../shopping/">
+      <a href="../shopping/#farm-shops">
         Farm Shops
       </a>
     </li>
 
     <li>
       <a href="../shopping/#antique-vintage">
-        Antique & Vintage Stores
+        Antique &amp; Vintage Stores
       </a>
     </li>
 
     <li>
-      <a href="../shopping/#furniture-home">
+      <a href="../shopping/#furniture-outlets">
         Furniture Outlets
       </a>
     </li>
@@ -248,7 +220,7 @@
     </li>
 
     <li>
-      <a href="../shopping/#local-businesses">
+      <a href="../shopping/#florists">
         Florists
       </a>
     </li>
