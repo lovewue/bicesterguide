@@ -496,6 +496,10 @@ a {
   gap: 40px;
 }
 
+.content-block {
+  scroll-margin-top: 130px;
+}
+
 .content-block h2 {
   margin: 0 0 10px;
   font-size: 1.8rem;
