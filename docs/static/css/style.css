@@ -17,7 +17,7 @@ body {
    ========================================================================== */
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: font-family: "Inter", Arial, sans-serif;
   background: #F4F3F2;
   color: #222222;
   line-height: 1.5;
@@ -288,7 +288,7 @@ a {
 .home-hero-title h1 {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
+  font-weight: 560;
   font-size: 3.4rem;
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -695,7 +695,7 @@ a {
 }
 
 .details-list dt {
-  font-weight: 700;
+  font-weight: 560;
   margin-bottom: 4px;
 }
 
