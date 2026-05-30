@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visitor Essentials for Bicester</title>
+  <meta name="description" content="Hotels, supermarkets, petrol stations, cash points and post office services near Bicester Village." />
+<link rel="icon" href="../static/images/favicon.ico" />
+<link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+  <div class="container header-inner">
+    <a href="../index.html" class="site-logo-link">
+      <img src="../static/images/The-Bicester-Guide-Logo.png" alt="Bicester Guide" class="site-logo">
+    </a>
+
+    <nav class="site-nav">
+      <a href="../hotels/">Hotels</a>
+      <a href="../eat-drink/">Eat & Drink</a>
+      <a href="../things-to-do/">Things to Do</a>
+      <a href="../shopping/">Shopping</a>
+      <a href="../useful-info/">Useful Info</a>
+    </nav>
+  </div>
+</header>
+
+  <main class="site-main">
+    <section class="page-section category-page">
+
+  <div class="container">
+    <div class="page-intro category-intro">
+      <p class="eyebrow">Visitor Essentials</p>
+
+      <h1>Visitor essentials for Bicester</h1>
+
+      <p>
+        Useful places and practical stops near Bicester Village, from hotels and supermarkets
+        to petrol stations, cash points and post office services.
+      </p>
+    </div>
+  </div>
+
+  <div class="sub-nav-wrap">
+    <nav class="sub-nav" aria-label="Visitor essentials sections">
+      <a href="#hotels">Hotels</a>
+      <a href="#supermarkets">Supermarkets</a>
+      <a href="#petrol-stations">Petrol Stations</a>
+      <a href="#banks-cash-points">Banks &amp; Cash Points</a>
+      <a href="#post-office">Post Office</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="content-sections">
+
+      <section class="content-block" id="hotels">
+        <h2>Hotels</h2>
+        <p class="section-intro">
+          Looking for somewhere to stay? See our dedicated guide to hotels near Bicester Village.
+        </p>
+        <a href="../hotels/" class="button button-secondary">View hotels</a>
+      </section>
+
+      <section class="content-block" id="supermarkets">
+        <h2>Supermarkets</h2>
+        <p class="section-intro">
+          Useful food shops and supermarkets for visitors staying nearby or travelling through Bicester.
+        </p>
+        <div class="listing-grid">
+          {{SUPERMARKET_CARDS}}
+        </div>
+      </section>
+
+      <section class="content-block" id="petrol-stations">
+        <h2>Petrol Stations</h2>
+        <p class="section-intro">
+          Convenient petrol stations and fuel stops around Bicester.
+        </p>
+        <div class="listing-grid">
+          {{PETROL_STATION_CARDS}}
+        </div>
+      </section>
+
+      <section class="content-block" id="banks-cash-points">
+        <h2>Banks &amp; Cash Points</h2>
+        <p class="section-intro">
+          Banks, cash points and useful money services in and around Bicester.
+        </p>
+        <div class="listing-grid">
+          {{BANK_CASHPOINT_CARDS}}
+        </div>
+      </section>
+
+      <section class="content-block" id="post-office">
+        <h2>Post Office</h2>
+        <p class="section-intro">
+          Post office services and parcel points useful for visitors and locals.
+        </p>
+        <div class="listing-grid">
+          {{POST_OFFICE_CARDS}}
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</section>
+  </main>
+
+  <section class="footer-directory">
+  <div class="container">
+
+    <div class="directory-grid">
+
+<div class="directory-column footer-logo-column">
+  <a href="../index.html" class="footer-logo-link">
+    <img src="../static/images/The-Bicester-Guide-Logo.png" alt="The Bicester Guide">
+  </a>
+</div>
+
+      <div class="directory-column">
+        <h3>Getting Around</h3>
+        <ul>
+          <li>Trains</li>
+          <li>Taxis & Airport Transfers</li>
+          <li>Car Hire</li>
+        </ul>
+      </div>
+
+<div class="directory-column">
+  <h3>
+    <a href="../visitor-essentials/">
+      Visitor Essentials
+    </a>
+  </h3>
+
+  <ul>
+    <li>
+      <a href="{{HOTELS_PATH}}">
+        Hotels
+      </a>
+    </li>
+
+    <li>
+      <a href="../visitor-essentials/#supermarkets">
+        Supermarkets
+      </a>
+    </li>
+
+    <li>
+      <a href="../visitor-essentials/#petrol-stations">
+        Petrol Stations
+      </a>
+    </li>
+
+    <li>
+      <a href="../visitor-essentials/#banks-cash-points">
+        Banks &amp; Cash Points
+      </a>
+    </li>
+
+    <li>
+      <a href="../visitor-essentials/#post-office">
+        Post Office
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="directory-column">
+  <h3>
+    <a href="../eat-drink/">
+      Food &amp; Drink
+    </a>
+  </h3>
+
+  <ul>
+    <li>
+      <a href="../eat-drink/#cafes-coffee-shops">
+        Cafés &amp; Coffee Shops
+      </a>
+    </li>
+
+    <li>
+      <a href="../eat-drink/#restaurants">
+        Restaurants
+      </a>
+    </li>
+
+    <li>
+      <a href="../eat-drink/#pubs-bars">
+        Pubs &amp; Bars
+      </a>
+    </li>
+
+    <li>
+      <a href="../eat-drink/#bakeries">
+        Bakeries
+      </a>
+    </li>
+
+    <li>
+      <a href="../eat-drink/#afternoon-tea">
+        Afternoon Tea
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="directory-column">
+  <h3>
+    <a href="../shopping/">
+      Shopping &amp; Local Businesses
+    </a>
+  </h3>
+
+  <ul>
+    <li>
+      <a href="../shopping/#farm-shops">
+        Farm Shops
+      </a>
+    </li>
+
+    <li>
+      <a href="../shopping/#antique-vintage">
+        Antique &amp; Vintage Stores
+      </a>
+    </li>
+
+    <li>
+      <a href="../shopping/#furniture-outlets">
+        Furniture Outlets
+      </a>
+    </li>
+
+    <li>
+      <a href="../shopping/#garden-centres">
+        Garden Centres
+      </a>
+    </li>
+
+    <li>
+      <a href="../shopping/#florists">
+        Florists
+      </a>
+    </li>
+  </ul>
+</div>
+
+      <div class="directory-column">
+        <h3>Beauty & Personal Care</h3>
+        <ul>
+          <li>Hair Salons</li>
+          <li>Barbers</li>
+          <li>Nail Salons</li>
+          <li>Massage & Treatments</li>
+        </ul>
+      </div>
+
+      <div class="directory-column">
+        <h3>Health & Wellbeing</h3>
+        <ul>
+          <li>Pharmacies</li>
+          <li>Vets</li>
+          <li>Gyms & Fitness</li>
+          <li>Spas & Beauty</li>
+        </ul>
+      </div>
+
+      <div class="directory-column">
+        <h3>Useful & Practical Services</h3>
+        <ul>
+          <li>Locksmiths</li>
+          <li>Dry Cleaning & Laundry</li>
+          <li>Tailors & Alterations</li>
+          <li>Mobile & Tech Repair</li>
+        </ul>
+      </div>
+
+      <div class="directory-column">
+        <h3>Car & Motoring Services</h3>
+        <ul>
+          <li>Garages</li>
+          <li>MOT & Servicing</li>
+          <li>Tyres</li>
+          <li>Car Wash & Valeting</li>
+          <li>Breakdown & Recovery</li>
+        </ul>
+      </div>
+
+      <div class="directory-column">
+        <h3>Emergency & Support</h3>
+        <ul>
+          <li>Emergency Services</li>
+          <li>24 Hour Taxis</li>
+          <li>Late Night Convenience Stores</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy; 2026 Bicester Guide. Your guide to Bicester Village and beyond.</p>
+  </div>
+</footer>
+</body>
+</html>
