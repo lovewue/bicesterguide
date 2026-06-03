@@ -277,7 +277,7 @@ a {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 1);
   padding: 42px 56px;
   border-radius: 36px;
   text-align: center;
