@@ -542,6 +542,8 @@ a {
   overflow: hidden;
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
   padding-bottom: 22px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-image-link {
@@ -583,7 +585,7 @@ a {
 .card-actions {
   display: flex;
   gap: 8px;
-  margin: 0 22px;
+  margin: auto 22px 0;
   flex-wrap: wrap;
 }
 
