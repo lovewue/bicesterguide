@@ -704,12 +704,22 @@ a {
   border-radius: 18px;
 }
 
-.hotel-intro {
-  margin-bottom: 32px;
+.hotel-detail-heading {
+  max-width: 1000px;
+  margin: 0 auto 32px;
+  padding: 0 20px;
+  text-align: center;
 }
 
-.hotel-intro h1 {
-  margin-bottom: 0;
+.hotel-detail-heading h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 12px;
+}
+
+.hotel-detail-heading p {
+  margin: 0 0 20px;
+  color: #555555;
 }
 
 .hotel-gallery {
@@ -749,7 +759,7 @@ a {
 
 .hotel-description {
   font-size: 1.05rem;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
 .hotel-description p:first-child {
@@ -789,7 +799,7 @@ a {
 }
 
 .details-list dt {
-  font-weight: 560;
+  font-weight: 600;
   margin-bottom: 4px;
 }
 
@@ -810,6 +820,10 @@ a {
   .hotel-layout {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .hotel-detail-heading h1 {
+    font-size: 1.75rem;
   }
 }
 
