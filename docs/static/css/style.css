@@ -733,6 +733,9 @@ a {
 .hotel-layout {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+
   display: grid;
   grid-template-columns: minmax(0, 1fr) 320px;
   gap: 48px;
