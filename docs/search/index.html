@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy</title>
-  <meta name="description" content="Privacy Policy for The Bicester Guide." />
+  <title>Search Bicester Guide</title>
+  <meta name="description" content="Search hotels, restaurants, shops, services and things to do in Bicester." />
 <link rel="icon" href="../static/images/favicon.ico" />
 <link rel="stylesheet" href="../static/css/style.css" />
 </head>
@@ -31,60 +31,31 @@
 
   <div class="container">
 
+    <div class="page-intro">
+      <h1>Search Bicester Guide</h1>
+      <p>Search hotels, restaurants, shops, services and things to do in and around Bicester.</p>
+    </div>
 
-<div class="page-intro">
-  <h1>Privacy Policy</h1>
+    <form class="search-page-form" role="search">
+      <input
+        type="search"
+        id="search-input"
+        name="q"
+        placeholder="Search for hotels, restaurants, taxis, shops..."
+        autocomplete="off"
+      >
+      <button type="submit" class="button button-primary">Search</button>
+    </form>
 
-  <p>
-    The Bicester Guide respects your privacy and is committed to protecting your personal information.
-  </p>
-</div>
+    <div id="search-summary" class="search-summary"></div>
 
-<div class="rich-text">
-
-  <h2>Who We Are</h2>
-
-  <p>
-    The Bicester Guide is an independent website providing information about Bicester Village, Bicester and the surrounding area.
-  </p>
-
-  <h2>Information We Collect</h2>
-
-  <p>
-    We may collect limited information when you contact us, complete a form or interact with the website.
-  </p>
-
-  <h2>Analytics</h2>
-
-  <p>
-    We may use analytics tools to understand how visitors use the website and improve the content and user experience.
-  </p>
-
-  <h2>Affiliate Links</h2>
-
-  <p>
-    Some links on this website are affiliate links. If you make a booking or purchase through these links, we may receive a commission at no additional cost to you.
-  </p>
-
-  <h2>Third-Party Websites</h2>
-
-  <p>
-    Links to external websites are provided for convenience. We are not responsible for the content, privacy policies or practices of third-party websites.
-  </p>
-
-  <h2>Contact</h2>
-
-  <p>
-    If you have any questions about this policy, please contact us via the website.
-  </p>
-
-</div>
-
+    <div id="search-results" class="listing-grid"></div>
 
   </div>
 
 </section>
 
+<script src="../static/js/search.js"></script>
   </main>
 
   <section class="footer-directory">
