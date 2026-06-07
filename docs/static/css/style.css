@@ -230,6 +230,24 @@ a {
   height: auto;
 }
 
+.footer-legal {
+  margin-top: 12px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-legal a:hover {
+  text-decoration: underline;
+}
+
 /* ==========================================================================
    Buttons
    ========================================================================== */
