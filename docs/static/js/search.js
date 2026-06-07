@@ -4,7 +4,10 @@ const resultsEl = document.getElementById("search-results");
 const summaryEl = document.getElementById("search-summary");
 
 function normalise(value) {
-  return String(value || "").toLowerCase();
+  return String(value || "")
+    .toLowerCase()
+    .replaceAll("-", " ")
+    .trim();
 }
 
 function isHotel(place) {
@@ -75,6 +78,7 @@ function matches(place, query) {
     place.description_short,
     place.description_long,
     place.tags
+    place.search_terms
   ].map(normalise).join(" ");
 
   return searchableText.includes(query);
