@@ -77,7 +77,7 @@ function matches(place, query) {
     place.area,
     place.description_short,
     place.description_long,
-    place.tags
+    place.tags,
     place.search_terms
   ].map(normalise).join(" ");
 
