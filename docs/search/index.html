@@ -27,16 +27,18 @@
 </header>
 
   <main class="site-main">
-    <section class="page-section">
+    <section class="page-section search-page">
 
   <div class="container">
 
     <div class="page-intro">
       <h1>Search Bicester Guide</h1>
-      <p>Search hotels, restaurants, shops, services and things to do in and around Bicester.</p>
+      <p>
+        Search hotels, restaurants, shops, services and things to do in and around Bicester.
+      </p>
     </div>
 
-    <form class="search-page-form" role="search">
+    <form id="search-form" class="search-page-form">
       <input
         type="search"
         id="search-input"
@@ -47,9 +49,9 @@
       <button type="submit" class="button button-primary">Search</button>
     </form>
 
-    <div id="search-summary" class="search-summary"></div>
+    <p id="search-summary" class="search-summary"></p>
 
-    <div id="search-results" class="listing-grid"></div>
+    <div id="search-results" class="search-results"></div>
 
   </div>
 

@@ -1010,3 +1010,73 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Search Page
+   ========================================================================== */
+
+
+.search-page-form {
+  max-width: 720px;
+  margin: 0 auto 32px;
+  display: flex;
+  gap: 12px;
+}
+
+.search-page-form input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 1px solid #ddd0c3;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.search-summary {
+  max-width: 900px;
+  margin: 0 auto 24px;
+  color: #666;
+}
+
+.search-results {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.search-result-card {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 20px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+.search-result-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.search-result-content h2 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+}
+
+.search-result-content p {
+  margin: 0 0 12px;
+}
+
+@media (max-width: 700px) {
+  .search-page-form {
+    flex-direction: column;
+  }
+
+  .search-result-card {
+    grid-template-columns: 1fr;
+  }
+}
