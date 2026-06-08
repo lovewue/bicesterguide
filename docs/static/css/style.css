@@ -288,7 +288,7 @@ a {
   left: 50%;
   bottom: -18px;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 1);
+  background: #F4F3F2;
   padding: 42px 56px;
   border-radius: 36px;
   text-align: center;
