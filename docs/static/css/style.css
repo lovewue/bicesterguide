@@ -337,6 +337,7 @@ a {
 
 .home-stripline {
   padding: 72px 0;
+  background: #FFFFFF;
 }
 
 .home-trip-section h2,
@@ -357,6 +358,7 @@ a {
 
 .home-feature-section {
   padding: 64px 0 80px;
+  background: #F4F3F2;
 }
 
 .home-feature-grid {
