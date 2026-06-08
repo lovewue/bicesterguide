@@ -458,7 +458,7 @@ a {
    ========================================================================== */
 
 .page-section {
-  padding: 32px 0 72px;
+  padding: 20px 0 72px;
 }
 
 .page-intro {
@@ -649,7 +649,7 @@ a {
   position: sticky;
   top: 82px;
   z-index: 30;
-  margin: 0 0 40px;
+  margin: 24px 0 40px;
   background: rgba(247, 245, 241, 0.96);
   backdrop-filter: blur(8px);
 }
