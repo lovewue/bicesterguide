@@ -293,7 +293,7 @@ a {
 .home-hero-title {
   position: absolute;
   left: 50%;
-  bottom: -30;
+  bottom: -10;
   transform: translateX(-50%);
   background: rgba(255, 255, 255, 1);
   padding: 42px 56px;
