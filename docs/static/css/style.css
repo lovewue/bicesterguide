@@ -1080,3 +1080,37 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   Hotels page enhancements
+   ========================================================================== */
+
+.hotels-page .listing-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.hotels-page .listing-card-image {
+  height: 320px;
+}
+
+.hotels-page .listing-card h3 {
+  font-size: 1.4rem;
+  min-height: auto;
+}
+
+.hotels-page .listing-card p {
+  min-height: auto;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.hotels-page .content-block {
+  margin-bottom: 32px;
+}
+
+@media (max-width: 900px) {
+  .hotels-page .listing-grid {
+    grid-template-columns: 1fr;
+  }
+}
