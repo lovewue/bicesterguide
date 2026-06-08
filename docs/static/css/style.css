@@ -1085,32 +1085,42 @@ a {
    Hotels page enhancements
    ========================================================================== */
 
-.hotels-page .listing-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 36px;
+.hotels-page .listing-card {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  padding-bottom: 0;
+}
+
+.hotels-page .card-image-link {
+  margin: 0 0 18px;
+  border-radius: 22px;
+  overflow: hidden;
 }
 
 .hotels-page .listing-card-image {
-  height: 320px;
+  height: 300px;
+  border-radius: 22px;
 }
 
 .hotels-page .listing-card h3 {
-  font-size: 1.4rem;
-  min-height: auto;
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+  min-height: 0;
 }
 
 .hotels-page .listing-card p {
-  min-height: auto;
-  font-size: 1rem;
+  margin: 0 0 14px;
+  min-height: 0;
+  font-size: 0.95rem;
   line-height: 1.7;
 }
 
-.hotels-page .content-block {
-  margin-bottom: 32px;
+.hotels-page .card-meta {
+  margin: 0 0 12px;
 }
 
-@media (max-width: 900px) {
-  .hotels-page .listing-grid {
-    grid-template-columns: 1fr;
-  }
+.hotels-page .card-actions {
+  margin: 0;
 }
