@@ -35,7 +35,7 @@
     <h1>Search THE BICESTER GUIDE</h1>
 
     <p>
-      Search for hotels, restaurants, shops, services and things to do in/ around Bicester
+      Search for hotels, restaurants, shops, services and things to do in and around Bicester.
     </p>
 
   </div>
@@ -44,10 +44,10 @@
 <section class="search-section">
   <div class="container">
 
-    <form class="search-form">
+    <form id="search-form" class="search-form">
       <input
         type="search"
-        id="searchInput"
+        id="search-input"
         placeholder="Search for hotels, restaurants, taxis, shops..."
         autocomplete="off"
       >
@@ -57,7 +57,9 @@
       </button>
     </form>
 
-    <div id="searchResults" class="search-results"></div>
+    <p id="search-summary" class="search-summary"></p>
+
+    <div id="search-results" class="search-results"></div>
 
   </div>
 </section>
