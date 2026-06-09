@@ -71,7 +71,7 @@ function card(place) {
   return `
     <article class="listing-card">
 
-      <a href="${url}" class="card-image-link">
+      <a href="${url}" target="_blank" rel="noopener" class="card-image-link">
         <img
           src="${placeImage(place)}"
           alt="${place.name || ""}"
@@ -81,7 +81,7 @@ function card(place) {
       </a>
 
       <h3>
-        <a href="${url}">
+        <a href="${url}" target="_blank" rel="noopener">
           ${place.name || ""}
         </a>
       </h3>
@@ -93,7 +93,7 @@ function card(place) {
       </div>
 
       <div class="card-actions">
-	<a href="${url}" class="button button-secondary">
+	<a href="${url}" target="_blank" rel="noopener" class="button button-secondary">
   	${placeLabel(place)}
 	</a>
       </div>
