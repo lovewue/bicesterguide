@@ -774,61 +774,68 @@ a {
    Search Page
    ========================================================================== */
 
-.search-page-form {
-  max-width: 720px;
-  margin: 0 auto 32px;
-  display: flex;
-  gap: 12px;
+.search-hero {
+  background: #f6f5f3;
+  text-align: center;
+  padding: 64px 0 20px;
 }
 
-.search-page-form input {
-  flex: 1;
-  padding: 14px 16px;
-  border: 1px solid #ddd0c3;
-  border-radius: 999px;
+.search-hero .eyebrow {
+  display: inline-block;
+  background: #faf8f4;
+  padding: 10px 36px;
+  margin-bottom: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #9a7048;
+}
+
+.search-hero h1 {
+  margin: 0 0 12px;
+  font-size: 2.3rem;
+  line-height: 1.1;
+}
+
+.search-hero p {
+  margin: 0;
   font-size: 1rem;
 }
 
-.search-summary {
-  max-width: 900px;
-  margin: 0 auto 24px;
-  color: #666666;
+.search-section {
+  background: #f6f5f3;
+  padding: 40px 0 90px;
 }
 
-.search-results {
-  max-width: 900px;
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 660px;
   margin: 0 auto;
-  display: grid;
-  gap: 20px;
 }
 
-.search-result-card {
-  display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  gap: 20px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 16px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+.search-form input {
+  flex: 1;
+  height: 50px;
+  padding: 0 18px;
+  border: 1px solid #e4d8ce;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.95rem;
 }
 
-.search-result-card img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
+.search-form button {
+  height: 42px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 7px;
+  background: #000;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-.search-result-content h2 {
-  margin: 0 0 8px;
-  font-size: 1.25rem;
-}
-
-.search-result-content p {
-  margin: 0 0 12px;
-}
-
 /* ========================================================================== 
    Responsive
    ========================================================================== */
