@@ -559,7 +559,7 @@ a {
   position: sticky;
   top: 82px;
   z-index: 30;
-  margin: 24px 0 40px;
+  margin: 24px 0 20px;
   background: rgba(247, 245, 241, 0.96);
   backdrop-filter: blur(8px);
 }
