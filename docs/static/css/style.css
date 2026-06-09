@@ -842,6 +842,14 @@ a {
   margin-top: 40px;
 }
 
+.search-results-section {
+  display: none;
+}
+
+.search-results-section.has-results {
+  display: block;
+}
+
 /* ==========================================================================
    Section Hero
    ========================================================================== */
