@@ -972,3 +972,38 @@ a {
     flex: 0 0 auto;
   }
 }
+
+/* ==========================================================================
+   Section Hero
+   ========================================================================== */
+
+.section-hero {
+  background: #f6f5f3;
+  text-align: center;
+  padding: 64px 0 20px;
+}
+
+.section-hero .eyebrow {
+  display: inline-block;
+  padding: 10px 36px;
+  margin-bottom: 20px;
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8a7d6d;
+}
+
+.section-hero h1 {
+  margin: 0 0 12px;
+  font-size: 2.3rem;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.section-hero p {
+  max-width: 820px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444444;
+}
