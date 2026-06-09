@@ -835,6 +835,13 @@ a {
   cursor: pointer;
 }
 
+.search-results-wrap {
+  background: #f6f5f3;
+  padding: 40px;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
 /* ==========================================================================
    Section Hero
    ========================================================================== */

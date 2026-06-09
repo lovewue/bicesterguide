@@ -35,6 +35,27 @@ function placeImage(place) {
   return "../static/images/holding.jpg";
 }
 
+function placeLabel(place) {
+  if (isHotel(place) && place.slug) {
+    return "View Hotel";
+  }
+
+  if (place.affiliate_url || place.booking_url) {
+    return "Check availability";
+  }
+
+  if (place.website) {
+    return "Visit website";
+  }
+
+  if (place.google_maps_url) {
+    return "View map";
+  }
+
+  return "View details";
+}
+
+
 function card(place) {
   const url = placeUrl(place);
 
@@ -63,9 +84,9 @@ function card(place) {
       </div>
 
       <div class="card-actions">
-        <a href="${url}" class="button button-secondary">
-          View details
-        </a>
+	<a href="${url}" class="button button-secondary">
+  	${placeLabel(place)}
+	</a>
       </div>
 
     </article>
