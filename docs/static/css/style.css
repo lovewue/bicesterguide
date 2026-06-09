@@ -404,7 +404,7 @@ a {
    ========================================================================== */
 
 .page-section {
-  padding: 20px 0 20px;
+  padding: 0px 0 20px;
 }
 
 .page-intro {
@@ -560,7 +560,7 @@ a {
   top: 82px;
   z-index: 30;
   background: #ffffff;
-  padding: 0;
+  padding: 20px 0 20px;
   margin: 0;
 }
 
