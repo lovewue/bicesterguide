@@ -39,30 +39,35 @@ function card(place) {
   const url = placeUrl(place);
 
   return `
-    <article class="search-result-card">
-      <a href="${url}" class="search-result-image-link">
+    <article class="listing-card">
+
+      <a href="${url}" class="card-image-link">
         <img
           src="${placeImage(place)}"
           alt="${place.name || ""}"
-          onerror="this.src='../static/images/holding.jpg'"
+          class="listing-card-image"
+          onerror="this.src='../static/images/placeholder.png'"
         >
       </a>
 
-      <div class="search-result-content">
-        <h2>
-          <a href="${url}">${place.name || ""}</a>
-        </h2>
+      <h3>
+        <a href="${url}">
+          ${place.name || ""}
+        </a>
+      </h3>
 
-        <p>${place.description_short || ""}</p>
+      <p>${place.description_short || ""}</p>
 
-        <div class="card-meta">
-          ${String(place.area || "").replaceAll("-", " ")}
-        </div>
+      <div class="card-meta">
+        ${String(place.area || "").replaceAll("-", " ")}
+      </div>
 
+      <div class="card-actions">
         <a href="${url}" class="button button-secondary">
           View details
         </a>
       </div>
+
     </article>
   `;
 }
