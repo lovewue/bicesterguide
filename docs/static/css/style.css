@@ -440,6 +440,7 @@ a {
 .content-sections {
   display: grid;
   gap: 40px;
+  background: #F4F3F2;
 }
 
 .content-block {
@@ -460,6 +461,7 @@ a {
 
 .content-subsection {
   margin-top: 48px;
+  
 }
 
 .content-subsection h3 {
