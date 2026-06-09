@@ -3,6 +3,15 @@ const input = document.getElementById("search-input");
 const resultsEl = document.getElementById("search-results");
 const summaryEl = document.getElementById("search-summary");
 
+if (!form || !input || !resultsEl || !summaryEl) {
+  console.error("Search elements missing", {
+    form,
+    input,
+    resultsEl,
+    summaryEl
+  });
+}
+
 function normalise(value) {
   return String(value || "")
     .toLowerCase()
@@ -119,19 +128,31 @@ async function runSearch(query) {
     return;
   }
 
-  const response = await fetch("../data/places.json");
-  const places = await response.json();
+  try {
+    const response = await fetch("../data/places.json");
 
-  const results = places
-    .filter(place => normalise(place.status) === "live")
-    .filter(place => matches(place, query))
-    .slice(0, 50);
+    if (!response.ok) {
+      throw new Error(`Could not load places.json: ${response.status}`);
+    }
 
-  summaryEl.textContent = `${results.length} result${results.length === 1 ? "" : "s"} for "${query}"`;
+    const places = await response.json();
 
-  resultsEl.innerHTML = results.length
-    ? results.map(card).join("")
-    : `<p>No results found. Try searching for hotels, taxis, restaurants, parking or shops.</p>`;
+    const results = places
+      .filter(place => normalise(place.status) === "live")
+      .filter(place => matches(place, query))
+      .slice(0, 50);
+
+    summaryEl.textContent = `${results.length} result${results.length === 1 ? "" : "s"} for "${query}"`;
+
+    resultsEl.innerHTML = results.length
+      ? results.map(card).join("")
+      : `<p>No results found. Try searching for hotels, taxis, restaurants, parking or shops.</p>`;
+
+  } catch (error) {
+    console.error("Search failed:", error);
+    summaryEl.textContent = "Search is temporarily unavailable.";
+    resultsEl.innerHTML = `<p>There was a problem loading the search data.</p>`;
+  }
 }
 
 const params = new URLSearchParams(window.location.search);
@@ -148,7 +169,13 @@ form.addEventListener("submit", function (event) {
   const query = input.value.trim();
 
   const url = new URL(window.location.href);
-  url.searchParams.set("q", query);
+
+  if (query) {
+    url.searchParams.set("q", query);
+  } else {
+    url.searchParams.delete("q");
+  }
+
   window.history.pushState({}, "", url);
 
   runSearch(query);
