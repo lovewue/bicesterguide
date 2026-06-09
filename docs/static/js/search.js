@@ -128,11 +128,13 @@ async function runSearch(query) {
     return;
   }
 
+  summaryEl.textContent = `Searching for "${query}"...`;
+
   try {
     const response = await fetch("../data/places.json");
 
     if (!response.ok) {
-      throw new Error(`Could not load places.json: ${response.status}`);
+      throw new Error(`places.json failed: ${response.status}`);
     }
 
     const places = await response.json();
@@ -150,8 +152,8 @@ async function runSearch(query) {
 
   } catch (error) {
     console.error("Search failed:", error);
-    summaryEl.textContent = "Search is temporarily unavailable.";
-    resultsEl.innerHTML = `<p>There was a problem loading the search data.</p>`;
+    summaryEl.textContent = "Search error";
+    resultsEl.innerHTML = `<p>${error.message}</p>`;
   }
 }
 
