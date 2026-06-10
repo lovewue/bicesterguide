@@ -449,9 +449,12 @@ a {
 }
 
 .content-block h2 {
-  margin: 0 0 10px;
-  font-size: 1.8rem;
-  line-height: 1.2;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #777777;
+  margin-bottom: 12px;
 }
 
 .content-block h3 {
