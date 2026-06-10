@@ -938,8 +938,17 @@ a {
    Hidden Gems
    ========================================================================== */
 
+
+.hidden-gems-page .content-block:first-child {
+  padding-top: 1.5rem;
+}
+
 .hidden-gems-page .content-block {
   margin-bottom: 4rem;
+}
+
+.hidden-gems-page .content-block:last-child {
+  margin-bottom: 0;
 }
 
 .hidden-gems-page .section-intro {
