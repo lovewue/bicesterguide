@@ -527,10 +527,12 @@ a {
 .listing-card h3 a {
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  text-decoration: none;
 }
 
 .listing-card h3 a:hover {
   color: #8a7d6d;
+  text-decoration: none;
 }
 
 .listing-card p {
