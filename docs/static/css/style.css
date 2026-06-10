@@ -141,17 +141,15 @@ a {
   align-items: center;
   gap: 56px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 0.85rem;
-}
-
-.site-nav {
-  display: flex;
-  align-items: center;
-  gap: 56px;
-  text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: 0.8rem;
+}
+
+.site-nav a,
+.site-nav a:visited,
+.site-nav a:hover,
+.site-nav a:focus {
+  text-decoration: none;
 }
 
 .site-nav a:hover {
