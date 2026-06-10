@@ -876,6 +876,33 @@ a {
 }
 
 /* ========================================================================== 
+   Contact Page
+   ========================================================================== */
+
+
+.contact-hero {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+}
+
+.contact-hero img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.content-section {
+  background: #fff;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #e5e5e5;
+}
+
+.content-section h2 {
+  margin-top: 0;
+}
+
+/* ========================================================================== 
    Responsive
    ========================================================================== */
 
