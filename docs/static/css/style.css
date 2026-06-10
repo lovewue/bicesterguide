@@ -141,6 +141,7 @@ a {
   align-items: center;
   gap: 56px;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .site-nav a {
@@ -902,7 +903,9 @@ a {
 }
 
 .info-hero h1 {
-  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
 }
 
 .info-sub-nav-wrap {
