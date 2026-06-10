@@ -145,11 +145,13 @@ a {
   font-size: 0.85rem;
 }
 
-.site-nav a {
-  text-decoration: none;
-  font-size: 0.98rem;
-  font-weight: 400;
-  color: #111111;
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
 }
 
 .site-nav a:hover {
