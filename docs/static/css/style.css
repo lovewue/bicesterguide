@@ -140,6 +140,7 @@ a {
   display: flex;
   align-items: center;
   gap: 56px;
+  text-transform: uppercase;
 }
 
 .site-nav a {
