@@ -903,8 +903,6 @@ a {
 .info-hero-image img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
   display: block;
   border-radius: 22px;
 }
