@@ -661,17 +661,22 @@ a {
 
 .directory-card:hover h3 {
   color: #8a7d6d;
-}/* ========================================================================== 
-   Hotel detail pages
+
+}
+
+/* ========================================================================== 
+   Hotel and place detail pages
    ========================================================================== */
 
-.hotel-hero {
+.hotel-hero,
+.place-hero {
   max-width: 1000px;
   margin: 32px auto 32px;
   padding: 0 20px;
 }
 
-.hotel-hero img {
+.hotel-hero img,
+.place-hero img {
   display: block;
   width: 100%;
   height: 560px;
@@ -679,25 +684,29 @@ a {
   border-radius: 18px;
 }
 
-.hotel-detail-heading {
+.hotel-detail-heading,
+.place-detail-heading {
   max-width: 1000px;
   margin: 0 auto 32px;
   padding: 0 20px;
   text-align: center;
 }
 
-.hotel-detail-heading h1 {
+.hotel-detail-heading h1,
+.place-detail-heading h1 {
   font-size: 2rem;
   line-height: 1.2;
   margin: 0 0 12px;
 }
 
-.hotel-detail-heading p {
+.hotel-detail-heading p,
+.place-detail-heading p {
   margin: 0 0 20px;
   color: #555555;
 }
 
-.hotel-gallery {
+.hotel-gallery,
+.place-gallery {
   max-width: 1000px;
   margin: 0 auto 48px;
   padding: 0 20px;
@@ -706,7 +715,8 @@ a {
   gap: 16px;
 }
 
-.hotel-gallery img {
+.hotel-gallery img,
+.place-gallery img {
   width: 100%;
   aspect-ratio: 4 / 3;
   height: auto;
@@ -715,7 +725,8 @@ a {
   display: block;
 }
 
-.hotel-layout {
+.hotel-layout,
+.place-layout {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px 64px;
@@ -726,24 +737,30 @@ a {
 }
 
 .hotel-main,
-.hotel-sidebar {
+.place-main,
+.hotel-sidebar,
+.place-sidebar {
   min-width: 0;
 }
 
-.hotel-description {
+.hotel-description,
+.place-description {
   font-size: 1.05rem;
   line-height: 1.7;
 }
 
-.hotel-description p:first-child {
+.hotel-description p:first-child,
+.place-description p:first-child {
   margin-top: 0;
 }
 
-.hotel-address {
+.hotel-address,
+.place-address {
   margin-top: 48px;
 }
 
-.hotel-address h2 {
+.hotel-address h2,
+.place-address h2 {
   margin-bottom: 12px;
 }
 
@@ -780,6 +797,7 @@ a {
   margin: 0;
   color: #555555;
 }
+
 
 /* ========================================================================== 
    Search Page
